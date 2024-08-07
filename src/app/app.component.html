@@ -2,9 +2,17 @@
 
 <div class="container-fluid p-0">
   <main class="container">
-    <app-home class="row justify-content-center"></app-home>
-    <app-about class="row justify-content-center"></app-about>
-    <app-projects class="row justify-content-center"></app-projects>
+    <div>
+      <app-home class="row justify-content-center"></app-home>
+    </div>
+
+    <div appFadeInOnScroll>
+      <app-about class="row justify-content-center"></app-about>
+    </div>
+
+    <div appFadeInOnScroll>
+      <app-projects class="row justify-content-center"></app-projects>
+    </div>
   </main>
 </div>
 

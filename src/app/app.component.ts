@@ -5,6 +5,7 @@ import { AboutComponent } from '../components/about/about.component';
 import { ProjectsComponent } from '../components/projects/projects.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
+import { FadeInOnScrollDirective } from '../directives/fade-in-scroll.directive';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
     ProjectsComponent,
     FooterComponent,
     NavbarComponent,
+    FadeInOnScrollDirective,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
