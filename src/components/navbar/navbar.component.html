@@ -1,5 +1,14 @@
-<p-menubar [model]="items">
-  <ng-template pTemplate="start">
-    <img src="assets/your-logo.png" height="40" class="mr-2" alt="Logo" />
-  </ng-template>
-</p-menubar>
+<div class="custom-navbar">
+  <div class="left-section">
+    <span class="logo">CR</span>
+    <span class="location">MADRID, SPAIN</span>
+    <span class="time">— {{ currentTime }}</span>
+  </div>
+  <div class="center-section">
+    <a (click)="scrollTo('about')">ABOUT ME</a>
+    <a (click)="scrollTo('projects')">WORK</a>
+  </div>
+  <div class="right-section">
+    <a (click)="scrollTo('contact')">LET'S TALK</a>
+  </div>
+</div>

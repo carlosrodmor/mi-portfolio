@@ -1,48 +1,61 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MenubarModule } from 'primeng/menubar';
-import { ButtonModule } from 'primeng/button';
-import { MenuItem } from 'primeng/api';
+import {
+  Component,
+  ViewEncapsulation,
+  OnInit,
+  OnDestroy,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, MenubarModule, ButtonModule],
+  imports: [CommonModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class NavbarComponent {
-  items: MenuItem[];
+export class NavbarComponent implements OnInit, OnDestroy {
+  currentTime: string = '';
+  private timerInterval: any;
+  private isBrowser: boolean;
 
-  constructor() {
-    this.items = [
-      {
-        label: 'Home',
-        icon: 'pi pi-fw pi-home',
-        command: () => this.scrollTo('home'),
-      },
-      {
-        label: 'About',
-        icon: 'pi pi-fw pi-user',
-        command: () => this.scrollTo('about'),
-      },
-      {
-        label: 'Projects',
-        icon: 'pi pi-fw pi-briefcase',
-        command: () => this.scrollTo('projects'),
-      },
-      {
-        label: 'Contact',
-        icon: 'pi pi-fw pi-envelope',
-        command: () => this.scrollTo('contact'),
-      },
-    ];
+  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+    this.updateTime();
   }
 
-  scrollTo(section: string) {
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  ngOnInit() {
+    if (this.isBrowser) {
+      this.timerInterval = setInterval(() => {
+        this.updateTime();
+      }, 1000);
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.isBrowser && this.timerInterval) {
+      clearInterval(this.timerInterval);
+    }
+  }
+
+  updateTime() {
+    const now = new Date();
+    this.currentTime = now.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    });
+  }
+
+  scrollTo(sectionId: string) {
+    if (this.isBrowser) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 }
