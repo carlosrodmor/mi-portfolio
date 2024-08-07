@@ -1,40 +1,53 @@
-:host ::ng-deep {
-  .p-menubar {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    border: none;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
 
-    .p-menubar-root-list {
-      display: flex;
-      justify-content: center;
-      width: auto;
-    }
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
 
-    .p-menuitem-link {
-      color: #333;
-      font-weight: 500;
-      transition: all 0.3s ease;
+.left-section,
+.center-section,
+.right-section {
+  display: flex;
+  align-items: center;
+}
 
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-      }
-    }
+.logo {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-right: 1.5rem;
+}
 
-    .p-menuitem-icon {
-      color: #000000;
-    }
+.location,
+.time {
+  font-size: 0.9rem;
+  margin-right: 0.75rem;
+  font-weight: 300;
+}
+
+.center-section a,
+.right-section a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+    transform: translateY(-2px);
+    cursor: pointer;
   }
+}
 
-  .p-button.p-button-success {
-    background: #28a745;
-    border-color: #28a745;
-
-    &:hover {
-      background: #218838;
-      border-color: #1e7e34;
-    }
-  }
+.right-section a {
+  font-weight: 600;
 }

@@ -1,46 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenubarModule } from 'primeng/menubar';
-import { ButtonModule } from 'primeng/button';
-import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, MenubarModule, ButtonModule],
+  imports: [CommonModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class NavbarComponent {
-  items: MenuItem[];
+  currentTime: string;
 
   constructor() {
-    this.items = [
-      {
-        label: 'Home',
-        icon: 'pi pi-fw pi-home',
-        command: () => this.scrollTo('home'),
-      },
-      {
-        label: 'About',
-        icon: 'pi pi-fw pi-user',
-        command: () => this.scrollTo('about'),
-      },
-      {
-        label: 'Projects',
-        icon: 'pi pi-fw pi-briefcase',
-        command: () => this.scrollTo('projects'),
-      },
-      {
-        label: 'Contact',
-        icon: 'pi pi-fw pi-envelope',
-        command: () => this.scrollTo('contact'),
-      },
-    ];
+    const now = new Date();
+    this.currentTime = now.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    });
   }
 
-  scrollTo(section: string) {
-    const element = document.getElementById(section);
+  scrollTo(sectionId: string) {
+    const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
