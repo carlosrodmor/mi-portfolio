@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HomeComponent } from "../components/home/home.component";
+import { AboutComponent } from "../components/about/about.component";
+import { ProjectsComponent } from "../components/projects/projects.component";
+import { ContactComponent } from "../components/contact/contact.component";
+import { FooterComponent } from "../components/footer/footer.component";
+import { NavbarComponent } from "../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, HomeComponent, AboutComponent, ProjectsComponent, ContactComponent, FooterComponent, NavbarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'mi-portfolio';
-}
+export class AppComponent {}

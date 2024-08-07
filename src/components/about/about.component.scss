@@ -1,0 +1,25 @@
+.about {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 80px 20px;
+
+  h2 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    text-align: center;
+  }
+}
