@@ -6,7 +6,7 @@ import { ProjectsComponent } from '../components/projects/projects.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { FadeInOnScrollDirective } from '../directives/fade-in-scroll.directive';
-
+import { ScrollTopModule } from 'primeng/scrolltop';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,6 +18,7 @@ import { FadeInOnScrollDirective } from '../directives/fade-in-scroll.directive'
     FooterComponent,
     NavbarComponent,
     FadeInOnScrollDirective,
+    ScrollTopModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
