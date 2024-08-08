@@ -3,22 +3,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  margin: 150px;
+}
 
-  .about-content {
-    max-width: 1200px;
-    text-align: center;
-  }
+.about-content {
+  max-width: 1200px;
+  text-align: justify;
+}
 
-  h2 {
-    font-size: 4rem;
-    margin-bottom: 30px;
-    font-family: "Inter", sans-serif;
-  }
+.about h2 {
+  font-size: 4rem;
+  margin-bottom: 30px;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
 
-  p {
-    font-size: 1.2rem;
-    line-height: 2;
-    font-family: "Inter", sans-serif;
-  }
+.about-me-english {
+  font-size: 1.4rem;
+  line-height: 2;
+  font-family: "Inter", sans-serif;
+  text-align: justify;
+}
+
+.about-me-spanish {
+  font-size: 1rem;
+  line-height: 2;
+  font-family: "Inter", sans-serif;
+  text-align: justify;
+}
+
+.hr-for-language-description {
+  border-color: rgb(255, 255, 255);
+  width: 50%;
 }
