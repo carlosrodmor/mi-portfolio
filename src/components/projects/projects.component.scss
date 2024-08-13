@@ -7,6 +7,11 @@
   padding: 50px 0;
   overflow: hidden;
 
+  &__instructions {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
   &__title {
     text-align: center;
     color: #ffffff;
@@ -29,7 +34,6 @@
     }
   }
 }
-
 swiper-container {
   width: 90%;
   height: 70vh;

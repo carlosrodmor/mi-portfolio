@@ -1,5 +1,8 @@
 <section class="projects" id="projects">
   <h2 class="projects__title">MY PROJECTS</h2>
+  <div class="projects__instructions">
+    <p>To view the next set of projects, simply drag in the image to the right.</p>
+  </div>
   <swiper-container [init]="false" #swiper>
     <swiper-slide *ngFor="let project of projects">
       <div class="project-slide" [style.backgroundImage]="'url(' + project.image + ')'">
