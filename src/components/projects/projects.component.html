@@ -1,16 +1,14 @@
 <section class="projects" id="projects">
-  <h2>MY PROJECTS</h2>
-  <div class="project-grid row">
-    <div class="row">
-      <div class="project-card col-4 col-md-12" *ngFor="let project of projects">
-        <div class="project-image">
-          <img [src]="project.image" [alt]="project.title">
-        </div>
+  <h2 class="projects__title">MY PROJECTS</h2>
+  <swiper-container [init]="false" #swiper>
+    <swiper-slide *ngFor="let project of projects">
+      <div class="project-slide" [style.backgroundImage]="'url(' + project.image + ')'">
         <div class="project-content">
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
+          <h3 class="project-content__title">{{ project.title }}</h3>
+          <p class="project-content__description">{{ project.description }}</p>
+          <a href="#" class="project-content__link">Learn More</a>
         </div>
       </div>
-    </div>
-  </div>
+    </swiper-slide>
+  </swiper-container>
 </section>
