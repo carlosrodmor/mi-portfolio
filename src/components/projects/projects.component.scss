@@ -54,10 +54,12 @@ swiper-slide {
   margin: 0 auto;
   border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(100%);
 
   &:hover {
     transform: scale(1.02);
+    filter: grayscale(25%);
 
     .project-content {
       opacity: 1;
