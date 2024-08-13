@@ -1,3 +1,5 @@
+// TO DO: Add the following styles for the responsive design of the projects component.
+
 .projects {
   background-color: #000000;
   min-height: 100vh;
@@ -6,6 +8,11 @@
   justify-content: center;
   padding: 50px 0;
   overflow: hidden;
+
+  &__instructions {
+    font-size: 0.85rem;
+    text-align: center;
+  }
 
   &__title {
     text-align: center;
@@ -29,7 +36,6 @@
     }
   }
 }
-
 swiper-container {
   width: 90%;
   height: 70vh;
@@ -82,12 +88,12 @@ swiper-slide {
   &__title {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: 100;
     color: #ffffff;
   }
 
   &__description {
-    font-size: 1.2rem;
+    font-size: 0.85rem;
     line-height: 1.6;
     margin-bottom: 30px;
     color: #ffffff;
