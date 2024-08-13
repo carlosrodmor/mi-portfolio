@@ -39,9 +39,8 @@ export class ProjectsComponent implements OnInit {
     },
     {
       title: 'React Portfolio',
-      // escribeme una descripcion de este portfolio antiguo que estaba creado con React y que decidiste cambiar a Angular porque mi experiencia laboral es con Angular
       description:
-        "In my previous portfolio, which I built using React, I showcased a range of projects that highlight my skills and growth as a developer. The portfolio featured a sleek, modern design and interactive elements that demonstrated my proficiency in front-end development and user experience design. Now, I'm presenting this work within my new portfolio, which I've developed using Angular. This transition reflects my ongoing commitment to learning and adapting to new technologies, as well as my ability to create dynamic, responsive web applications using different frameworks.",
+        'This portfolio was developed using React, a skill I acquired during my training at Ironhack. Through this project, I was able to apply the front-end knowledge I gained and create a modern, functional interface. Now, my focus has shifted towards Angular, and the current version of this portfolio, from which you are reading this text, has been built using Angular. This transition not only reflects my ongoing commitment to learning new tools and technologies but also demonstrates my ability to adapt and create dynamic, responsive web applications using different frameworks.',
       image: 'assets/project3.png',
     },
   ];
