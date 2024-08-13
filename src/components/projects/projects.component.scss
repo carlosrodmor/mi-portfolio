@@ -1,47 +1,161 @@
 .projects {
-  padding: 80px 20px;
-  background-color: white;
+  background-color: #000000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 0;
+  overflow: hidden;
 
-  h2 {
+  &__title {
     text-align: center;
     color: #ffffff;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     margin-bottom: 50px;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: #ffffff;
+    }
+  }
+}
+
+swiper-container {
+  width: 90%;
+  height: 70vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+swiper-slide {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.project-slide {
+  background-size: cover;
+  background-position: center;
+  width: 80%;
+  height: 60vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+
+    .project-content {
+      opacity: 1;
+    }
+  }
+}
+
+.project-content {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  padding: 40px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #ffffff;
   }
 
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+  &__description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #ffffff;
+  }
 
-    .project-card {
-      background-color: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+  &__link {
+    align-self: flex-start;
+    padding: 12px 25px;
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
 
-      &:hover {
-        transform: translateY(-5px);
-      }
+    &:hover {
+      background-color: #000000;
+      color: #ffffff;
+      outline: 1px solid #ffffff;
+    }
+  }
+}
 
-      img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
+::ng-deep .swiper-pagination-bullet {
+  background: #ffffff;
+  opacity: 0.5;
 
-      h3 {
-        font-size: 1.3rem;
-        color: #ffffff;
-        margin: 15px;
-      }
+  &-active {
+    opacity: 1;
+  }
+}
 
-      p {
-        font-size: 1rem;
-        color: #666;
-        margin: 0 15px 15px;
-      }
+@media (max-width: 1024px) {
+  .project-slide {
+    width: 90%;
+    height: 50vh;
+  }
+
+  .project-content {
+    padding: 30px;
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__description {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  swiper-container {
+    width: 95%;
+  }
+
+  .project-slide {
+    width: 95%;
+    height: 40vh;
+  }
+
+  .project-content {
+    padding: 20px;
+
+    &__title {
+      font-size: 1.8rem;
+    }
+
+    &__description {
+      font-size: 0.9rem;
     }
   }
 }
