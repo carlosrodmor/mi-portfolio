@@ -7,6 +7,7 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { FadeInOnScrollDirective } from '../directives/fade-in-scroll.directive';
 import { ScrollTopModule } from 'primeng/scrolltop';
+import { ExperienceComponent } from "../components/experience/experience.component";
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -19,7 +20,8 @@ import { ScrollTopModule } from 'primeng/scrolltop';
     NavbarComponent,
     FadeInOnScrollDirective,
     ScrollTopModule,
-  ],
+    ExperienceComponent
+],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
