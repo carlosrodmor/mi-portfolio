@@ -102,9 +102,17 @@ swiper-slide {
   }
 
   &__description {
-    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    font-size: 1rem;
     line-height: 1.4;
     margin-bottom: clamp(10px, 3vw, 20px);
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.6rem;
+    }
   }
 
   &__link {
