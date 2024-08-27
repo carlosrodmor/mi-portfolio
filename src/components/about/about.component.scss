@@ -18,10 +18,10 @@ body {
 }
 
 .about-me-title {
-  font-size: 3.5rem;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
   font-weight: 100;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 2rem;
   position: relative;
 
   &::after {
@@ -37,22 +37,22 @@ body {
 }
 
 .about-me-english {
-  font-size: 1.2rem;
-  line-height: 2;
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  line-height: 1.6;
   text-align: justify;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .about-me-spanish {
-  font-size: 0.9rem;
-  line-height: 2;
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  line-height: 1.6;
   text-align: justify;
 }
 
 .hr-for-language-description {
   border-color: rgb(255, 255, 255);
   width: 50%;
-  margin: 2rem auto;
+  margin: 1.5rem auto;
 }
 
 .bold-text {
@@ -61,40 +61,37 @@ body {
 
 @media (max-width: 768px) {
   .about {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .about-me-title {
-    font-size: 2rem;
-  }
-
-  .about-me-english {
-    font-size: 1rem;
-    line-height: 1.8;
-  }
-
-  .about-me-spanish {
-    font-size: 0.8rem;
-    line-height: 1.8;
+    margin-bottom: 1.5rem;
   }
 
   .hr-for-language-description {
-    width: 80%;
+    width: 70%;
   }
 }
 
 @media (max-width: 480px) {
+  .about {
+    padding: 1rem;
+  }
+
+  .about-content {
+    max-width: 100%;
+  }
+
   .about-me-title {
-    font-size: 1.8rem;
+    margin-bottom: 1rem;
+
+    &::after {
+      width: 40px;
+    }
   }
 
-  .about-me-english {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-
-  .about-me-spanish {
-    font-size: 0.75rem;
-    line-height: 1.6;
+  .hr-for-language-description {
+    width: 80%;
+    margin: 1rem auto;
   }
 }

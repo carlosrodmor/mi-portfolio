@@ -6,17 +6,21 @@
   justify-content: center;
   align-items: center;
   font-family: "Inter", sans-serif;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .content {
   text-align: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .main-title {
-  font-size: 15vw;
+  font-size: clamp(3rem, 15vw, 15rem);
   font-weight: 300;
   line-height: 0.9;
-  margin-bottom: 2rem;
+  margin-bottom: clamp(1rem, 5vw, 2rem);
 
   .line1,
   .line2 {
@@ -28,9 +32,8 @@
   }
 }
 
-.info,
-.specialization {
-  font-size: 1rem;
+.info {
+  font-size: clamp(0.8rem, 3vw, 1rem);
   margin-bottom: 1rem;
 
   p {
@@ -43,6 +46,40 @@
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.8rem;
+  font-size: clamp(0.6rem, 2vw, 0.8rem);
   opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    .line2 {
+      margin-left: 10%;
+    }
+  }
+
+  .info {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    padding: 0.5rem;
+  }
+
+  .main-title {
+    .line2 {
+      margin-left: 5%;
+    }
+  }
+
+  .info {
+    p {
+      margin: 0.1rem 0;
+    }
+  }
+
+  .scroll-indicator {
+    bottom: 1rem;
+  }
 }
