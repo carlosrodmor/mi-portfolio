@@ -1,27 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HomeComponent } from '../components/home/home.component';
-import { AboutComponent } from '../components/about/about.component';
-import { ProjectsComponent } from '../components/projects/projects.component';
-import { FooterComponent } from '../components/footer/footer.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
-import { FadeInOnScrollDirective } from '../directives/fade-in-scroll.directive';
-import { ScrollTopModule } from 'primeng/scrolltop';
-import { ExperienceComponent } from "../components/experience/experience.component";
+import { FooterComponent } from '../components/footer/footer.component';
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    HomeComponent,
-    AboutComponent,
-    ProjectsComponent,
-    FooterComponent,
-    NavbarComponent,
-    FadeInOnScrollDirective,
-    ScrollTopModule,
-    ExperienceComponent
-],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

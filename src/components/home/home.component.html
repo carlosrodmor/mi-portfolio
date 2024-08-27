@@ -1,14 +1,22 @@
-<section class="home">
-  <div class="content">
-    <h1 class="main-title">
-      <span class="line1">Carlos</span>
-      <span class="line2">Rodríguez</span>
-    </h1>
-    <div class="row">
-      <div class="info col-12 col-md-6" appFadeInOnScroll>
-        <p>FRONT END DEVELOPER</p>
-        <p>BASED IN MADRID</p>
-      </div>
+
+<div class="container-fluid p-0">
+  <main class="container">
+    <div appFadeInOnScroll>
+      <app-home class="row justify-content-center"></app-home>
     </div>
-  </div>
-</section>
+
+    <div appFadeInOnScroll>
+      <app-about class="row justify-content-center"></app-about>
+    </div>
+
+    <div appFadeInOnScroll>
+      <app-projects class="row justify-content-center"></app-projects>
+    </div>
+    <div appFadeInOnScroll>
+      <app-experience class="row justify-content-center"></app-experience>
+    </div>
+  </main>
+</div>
+
+
+<p-scrollTop />
