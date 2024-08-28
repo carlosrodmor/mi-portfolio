@@ -1,15 +1,24 @@
 <div class="custom-navbar">
   <div class="left-section">
     <span class="logo">CR</span>
-    <span class="location">MADRID, SPAIN</span>
-    <span class="time">— {{ currentTime }}</span>
   </div>
-  <div class="center-section">
+  <nav class="center-nav">
     <a (click)="scrollTo('about')">ABOUT ME</a>
     <a (click)="scrollTo('projects')">WORK</a>
     <a (click)="scrollTo('experience-cv')">CV</a>
-  </div>
+  </nav>
   <div class="right-section">
-    <a (click)="scrollTo('contact')">LET'S TALK</a>
+    <a (click)="sendEmail()" class="lets-talk">LET'S TALK</a>
   </div>
+  <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+</div>
+<div class="mobile-menu" [class.active]="isMenuOpen">
+  <a (click)="scrollTo('about'); toggleMenu()">ABOUT ME</a>
+  <a (click)="scrollTo('projects'); toggleMenu()">WORK</a>
+  <a (click)="scrollTo('experience-cv'); toggleMenu()">CV</a>
+  <a (click)="sendEmail(); toggleMenu()">LET'S TALK</a>
 </div>

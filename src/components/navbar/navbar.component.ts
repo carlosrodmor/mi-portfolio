@@ -18,6 +18,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   currentTime: string = '';
+  isMenuOpen: boolean = false;
   private timerInterval: any;
   private isBrowser: boolean;
 
@@ -60,5 +61,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
+  }
+
+  sendEmail() {
+    if (this.isBrowser) {
+      window.location.href = 'mailto:carlos97sdg@gmail.com';
+    }
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }
