@@ -44,7 +44,7 @@ export class ProjectsComponent implements OnInit {
       description:
         'This portfolio was developed using React, a skill I acquired during my training at Ironhack. Through this project, I was able to apply the front-end knowledge I gained and create a modern, functional interface. Now, my focus has shifted towards Angular, and the current version of this portfolio, from which you are reading this text, has been built using Angular. This transition not only reflects my ongoing commitment to learning new tools and technologies but also demonstrates my ability to adapt and create dynamic, responsive web applications using different frameworks.',
       image: 'assets/project3.png',
-      url: 'https://carlosrodmor.github.io',
+      url: 'https://carlosrodmor.github.io/react-portfolio',
     },
   ];
 
