@@ -13,11 +13,36 @@
 .left-section,
 .right-section {
   flex: 1;
+  display: flex;
+  align-items: center;
 }
 
-.logo {
-  font-size: 2rem;
-  font-weight: 600;
+.left-section {
+  .logo {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-right: 1rem;
+  }
+
+  .location-time {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 300;
+    white-space: nowrap;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    .location {
+      margin-right: 0.5rem;
+    }
+
+    .time {
+      margin-left: 0.5rem;
+    }
+  }
 }
 
 .center-nav {
@@ -46,7 +71,6 @@
 }
 
 .right-section {
-  display: flex;
   justify-content: flex-end;
   cursor: pointer;
 
@@ -108,9 +132,9 @@
   display: none;
   flex-direction: column;
   position: fixed;
-  cursor: pointer;
   top: 0;
   left: 0;
+  cursor: pointer;
   height: 100vh;
   width: 100%;
   background-color: #000000;
