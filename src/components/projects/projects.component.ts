@@ -35,7 +35,7 @@ export class ProjectsComponent implements OnInit {
     {
       title: 'Final Project Ironhack',
       description:
-        'For our final project at Ironhack, I teamed up with two friends to create a full-stack web application for booking private programming lessons. We used the MERN stack (MongoDB, Express, React, Node.js) to build both the front-end and back-end, ensuring a smooth and responsive user experience. The platform allows users to browse available courses, book lessons, and manage their schedules. This project was an incredible experience that allowed us to apply everything we learned during the course, from designing a dynamic user interface to implementing secure server-side logic and database management.',
+        'For our final project at Ironhack, I teamed up with two friends to create a full-stack web application for booking private programming lessons. We used the MERN stack (MongoDB, Express, React, Node.js) to build both the front-end and back-end, ensuring a smooth user experience. The platform allows users to browse available courses, book lessons, and manage their schedules. This project was an incredible experience that allowed us to apply everything we learned during the course, from designing a dynamic user interface to implementing secure server-side logic and database management.',
       image: 'assets/project2.png',
       url: 'https://code-connectt.netlify.app/',
     },
