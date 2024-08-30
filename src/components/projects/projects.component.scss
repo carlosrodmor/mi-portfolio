@@ -39,7 +39,7 @@
 
 swiper-container {
   width: 100%;
-  height: clamp(300px, 70vh, 600px);
+  height: 70vh;
   padding-top: clamp(20px, 5vw, 50px);
   padding-bottom: clamp(20px, 5vw, 50px);
 }
@@ -56,7 +56,7 @@ swiper-slide {
   background-size: cover;
   background-position: center;
   width: clamp(250px, 80%, 1000px);
-  height: clamp(250px, 60vh, 500px);
+  height: 100%;
   margin: 0 auto;
   border-radius: 10px;
   overflow: hidden;
@@ -102,17 +102,9 @@ swiper-slide {
   }
 
   &__description {
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2vw, 1rem);
     line-height: 1.4;
     margin-bottom: clamp(10px, 3vw, 20px);
-
-    @media (max-width: 768px) {
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 0.6rem;
-    }
   }
 
   &__link {
@@ -136,12 +128,37 @@ swiper-slide {
   }
 }
 
-::ng-deep .swiper-pagination-bullet {
-  background: #ffffff;
-  opacity: 0.5;
+// Media query para portátil :/
 
-  &-active {
-    opacity: 1;
+@media (min-width: 1024px) and (max-width: 1366px) {
+  swiper-container {
+    height: 80vh;
+  }
+
+  .project-slide {
+    height: 100%;
+  }
+
+  .project-content {
+    padding: 30px;
+
+    &__title {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    &__description {
+      font-size: 1rem;
+      line-height: 1.5;
+      max-height: 60%;
+      overflow-y: auto;
+    }
+
+    &__link {
+      font-size: 0.9rem;
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
   }
 }
 
@@ -182,31 +199,11 @@ swiper-slide {
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1366px) {
-  .project-slide {
-    height: 65vh;
-  }
+::ng-deep .swiper-pagination-bullet {
+  background: #ffffff;
+  opacity: 0.5;
 
-  .project-content {
-    padding: 20px;
-
-    &__title {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-
-    &__description {
-      font-size: 0.9rem;
-      line-height: 1.4;
-      max-height: 50%;
-      overflow-y: auto;
-      margin-bottom: 15px;
-    }
-
-    &__link {
-      font-size: 0.8rem;
-      padding: 8px 16px;
-      margin-top: 10px;
-    }
+  &-active {
+    opacity: 1;
   }
 }
