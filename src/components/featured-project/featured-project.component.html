@@ -1,35 +1,89 @@
 <section class="featured-project" id="work">
+  <div class="featured-project__background">
+    <div class="gradient-overlay"></div>
+    <div class="grid-pattern"></div>
+  </div>
+
   <div class="featured-project__content">
-    <span class="featured-project__label">PROYECTO DESTACADO</span>
-    <h2 class="featured-project__title">{{ featuredProject.title }}</h2>
+    <div class="featured-project__header">
+      <span class="featured-project__label">
+        <span class="dot"></span>
+        PROYECTO DESTACADO
+      </span>
+      <h2 class="featured-project__title">{{ featuredProject.title }}</h2>
+    </div>
     
     <div class="featured-project__description-box">
       <p class="featured-project__description">{{ featuredProject.description }}</p>
+      <div class="featured-project__stats">
+        <div class="stat">
+          <span class="stat-number">10K+</span>
+          <span class="stat-label">Usuarios activos</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Features</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">24/7</span>
+          <span class="stat-label">Soporte</span>
+        </div>
+      </div>
     </div>
 
     <div class="featured-project__tech-stack">
-      <span *ngFor="let tech of featuredProject.technologies" class="tech-tag">
-        {{ tech }}
-      </span>
+      <div class="tech-category">
+        <span class="category-label">TECNOLOGÍAS PRINCIPALES</span>
+        <div class="tech-tags">
+          <span *ngFor="let tech of featuredProject.technologies" class="tech-tag">
+            {{ tech }}
+          </span>
+        </div>
+      </div>
+      <div class="tech-category">
+        <span class="category-label">CARACTERÍSTICAS</span>
+        <div class="feature-tags">
+          <span class="feature-tag">Responsive Design</span>
+          <span class="feature-tag">High Performance</span>
+          <span class="feature-tag">SEO Optimized</span>
+        </div>
+      </div>
     </div>
 
-    <a [href]="featuredProject.url" 
-       target="_blank" 
-       class="featured-project__link"
-       rel="noopener noreferrer">
-      Visitar sitio
-      <svg xmlns="http://www.w3.org/2000/svg" 
-           width="24" 
-           height="24" 
-           viewBox="0 0 24 24" 
-           fill="none" 
-           stroke="currentColor" 
-           stroke-width="2" 
-           stroke-linecap="round" 
-           stroke-linejoin="round">
-        <line x1="7" y1="17" x2="17" y2="7"></line>
-        <polyline points="7 7 17 7 17 17"></polyline>
-      </svg>
-    </a>
+    <div class="featured-project__actions">
+      <a [href]="featuredProject.url" 
+         target="_blank" 
+         class="featured-project__link primary"
+         rel="noopener noreferrer">
+        <span>Visitar sitio</span>
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             width="24" 
+             height="24" 
+             viewBox="0 0 24 24" 
+             fill="none" 
+             stroke="currentColor" 
+             stroke-width="2" 
+             stroke-linecap="round" 
+             stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+      <a href="#other-projects" class="featured-project__link secondary">
+        Ver más proyectos
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             width="24" 
+             height="24" 
+             viewBox="0 0 24 24" 
+             fill="none" 
+             stroke="currentColor" 
+             stroke-width="2" 
+             stroke-linecap="round" 
+             stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <polyline points="19 12 12 19 5 12"></polyline>
+        </svg>
+      </a>
+    </div>
   </div>
 </section> 
