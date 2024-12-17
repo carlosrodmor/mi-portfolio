@@ -10,13 +10,14 @@
   overflow: hidden;
 
   &__background {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 0;
     will-change: transform;
+    pointer-events: none;
 
     .gradient-overlay {
       position: absolute;
@@ -24,26 +25,23 @@
       height: 100%;
       background: radial-gradient(
         circle at center,
-        rgba(255, 255, 255, 0.03) 0%,
+        rgba(255, 255, 255, 0.02) 0%,
         rgba(0, 0, 0, 0) 70%
       );
-      animation: pulse 8s ease-in-out infinite;
-      will-change: opacity;
+      opacity: 0.5;
     }
 
     .grid-pattern {
       position: absolute;
       width: 200%;
       height: 200%;
-      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100px 100px;
       transform: rotate(45deg);
       left: -50%;
       top: -50%;
-      animation: moveGrid 20s linear infinite;
-      will-change: transform;
-      pointer-events: none;
+      opacity: 0.3;
     }
   }
 
@@ -53,17 +51,18 @@
     position: relative;
     z-index: 1;
     padding: 2rem;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
     transform: translateZ(0);
     will-change: transform;
+    contain: content;
 
     &:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) translateZ(0);
     }
   }
 
@@ -188,12 +187,13 @@
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     font-size: 0.9rem;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: translateZ(0);
 
     &:hover {
       background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-2px);
+      transform: translateY(-2px) translateZ(0);
       border-color: rgba(255, 255, 255, 0.3);
     }
   }
@@ -222,7 +222,8 @@
     font-size: 1rem;
     padding: 1rem 2rem;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    transform: translateZ(0);
 
     &.primary {
       background: rgba(255, 255, 255, 0.1);
@@ -230,7 +231,7 @@
 
       &:hover {
         background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px);
+        transform: translateY(-2px) translateZ(0);
       }
     }
 
@@ -239,43 +240,25 @@
 
       &:hover {
         background: rgba(255, 255, 255, 0.05);
-        transform: translateY(-2px);
+        transform: translateY(-2px) translateZ(0);
       }
     }
 
     svg {
-      transition: transform 0.3s ease;
+      transition: transform 0.2s ease;
     }
 
     &:hover svg {
-      transform: translate(3px, -3px);
-    }
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 0.3;
-    }
-    50% {
-      opacity: 0.5;
-    }
-  }
-
-  @keyframes moveGrid {
-    0% {
-      transform: rotate(45deg) translateY(0);
-    }
-    100% {
-      transform: rotate(45deg) translateY(-50px);
+      transform: translate(3px, -3px) translateZ(0);
     }
   }
 
   @keyframes blink {
     0%, 100% {
-      opacity: 1;
+      opacity: 0.8;
     }
     50% {
-      opacity: 0.3;
+      opacity: 0.4;
     }
   }
 
@@ -284,8 +267,9 @@
 
     &__content {
       padding: 1.5rem;
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: rgba(0, 0, 0, 0.7);
     }
 
     &__stats {
@@ -305,8 +289,8 @@
 
     &__background {
       .grid-pattern {
-        background-size: 80px 80px;
-        animation: moveGrid 30s linear infinite;
+        background-size: 150px 150px;
+        opacity: 0.2;
       }
     }
   }
