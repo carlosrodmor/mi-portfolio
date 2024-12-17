@@ -8,7 +8,7 @@
         <div class="featured-project__header">
             <span class="featured-project__label">
                 <span class="dot"></span>
-                PROYECTO DESTACADO
+                FEATURED PROJECT
             </span>
             <h2 class="featured-project__title">{{ featuredProject.title }}</h2>
         </div>
@@ -18,7 +18,7 @@
             <div class="featured-project__stats">
                 <div class="stat">
                     <span class="stat-number">1K+</span>
-                    <span class="stat-label">Visitas</span>
+                    <span class="stat-label">Views</span>
                 </div>
                 <div class="stat">
                     <span class="stat-number">20+</span>
@@ -26,14 +26,14 @@
                 </div>
                 <div class="stat">
                     <span class="stat-number">24/7</span>
-                    <span class="stat-label">Soporte</span>
+                    <span class="stat-label">Support</span>
                 </div>
             </div>
         </div>
 
         <div class="featured-project__tech-stack">
             <div class="tech-category">
-                <span class="category-label">TECNOLOGÍAS PRINCIPALES</span>
+                <span class="category-label">MAIN TECHNOLOGIES</span>
                 <div class="tech-tags">
                     <span *ngFor="let tech of featuredProject.technologies" class="tech-tag">
                         {{ tech }}
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="tech-category">
-                <span class="category-label">CARACTERÍSTICAS</span>
+                <span class="category-label">FEATURES</span>
                 <div class="feature-tags">
                     <span class="feature-tag">Responsive Design</span>
                     <span class="feature-tag">High Performance</span>
@@ -53,7 +53,7 @@
         <div class="featured-project__actions">
             <a [href]="featuredProject.url" target="_blank" class="featured-project__link primary"
                 rel="noopener noreferrer">
-                <span>Visitar sitio</span>
+                <span>Visit site</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -61,7 +61,7 @@
                 </svg>
             </a>
             <a href="#other-projects" class="featured-project__link secondary">
-                Ver más proyectos
+                View more projects
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
