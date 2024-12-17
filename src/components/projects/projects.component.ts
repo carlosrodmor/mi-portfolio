@@ -26,9 +26,9 @@ export class ProjectsComponent implements OnInit {
 
   projects = [
     {
-      title: 'Portfolio de José M. Rodríguez',
+      title: 'José M. Rodríguez Portfolio',
       description:
-        'Portfolio personal de José M. Rodríguez, un destacado escritor e ingeniero asturiano. Con una exitosa carrera como ingeniero de telecomunicaciones, ha dedicado gran parte de su vida profesional a la ingeniería, alcanzando posiciones de prestigio en el sector. Paralelamente, su pasión por la literatura le ha llevado a escribir y publicar obras tanto en asturiano como en castellano, contribuyendo significativamente a la cultura literaria de Asturias. Este portfolio muestra su trayectoria dual como ingeniero y escritor, reflejando su compromiso con la tecnología y la preservación de la lengua y cultura asturianas.',
+        'Personal portfolio of José M. Rodríguez, a prominent Asturian writer and engineer. With a successful career as a telecommunications engineer, he has dedicated much of his professional life to engineering, reaching prestigious positions in the sector. At the same time, his passion for literature has led him to write and publish works in both Asturian and Spanish, making significant contributions to the literary culture of Asturias. This portfolio showcases his dual career as an engineer and writer, reflecting his commitment to technology and the preservation of Asturian language and culture.',
       image: 'assets/project0.png',
       url: 'https://carlosrodmor.github.io/portfolio-chema/',
     },

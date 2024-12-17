@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:mi-portfolio": "node dist/mi-portfolio/server/server.mjs"
+    "serve:ssr:mi-portfolio": "node dist/mi-portfolio/server/server.mjs",
+    "deploy": "ng build --configuration production && cd dist/mi-portfolio/browser && copy . ../../../carlosrodmor.github.io && cd ../../../carlosrodmor.github.io && git add . && git commit -m \"Deploy update\" && git push"
   },
   "private": true,
   "dependencies": {
