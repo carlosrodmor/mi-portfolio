@@ -5,9 +5,10 @@
     <p>This projects were not designed to be responsive.</p>
   </div>
   <swiper-container [init]="false" #swiper>
-    <swiper-slide *ngFor="let project of projects">
+    <swiper-slide *ngFor="let project of projects; let i = index">
       <div class="project-slide" [style.backgroundImage]="'url(' + project.image + ')'">
         <div class="project-content">
+          <app-in-progress-banner *ngIf="i === 0"></app-in-progress-banner>
           <h3 class="project-content__title">{{ project.title }}</h3>
           <p class="project-content__description">{{ project.description }}</p>
           <a href={{project.url}} class="project-content__link" target="_blank">Visit the website</a>

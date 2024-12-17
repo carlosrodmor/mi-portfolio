@@ -6,13 +6,13 @@ import {
   ElementRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { InProgressBannerComponent } from '../in-progress-banner/in-progress-banner.component';
 import { register } from 'swiper/element/bundle';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, InProgressBannerComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],

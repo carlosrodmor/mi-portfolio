@@ -75,6 +75,7 @@ swiper-slide {
 }
 
 .project-content {
+  position: relative;
   background: rgba(0, 0, 0, 0.8);
   color: #ffffff;
   padding: clamp(15px, 4vw, 40px);
@@ -128,7 +129,65 @@ swiper-slide {
   }
 }
 
-// Media query para portátil :/
+.in-progress-banner {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.95);
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    animation: scanline 2s linear infinite;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
 
 @media (min-width: 1024px) and (max-width: 1366px) {
   swiper-container {
@@ -195,6 +254,17 @@ swiper-slide {
       .project-content {
         opacity: 1;
       }
+    }
+  }
+
+  .in-progress-banner {
+    top: 15px;
+    padding: 6px 12px;
+    font-size: 0.7rem;
+
+    &::before {
+      width: 6px;
+      height: 6px;
     }
   }
 }
