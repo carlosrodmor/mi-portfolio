@@ -26,6 +26,13 @@ export class ProjectsComponent implements OnInit {
 
   projects = [
     {
+      title: 'Portfolio de José M. Rodríguez',
+      description:
+        'Portfolio personal de José M. Rodríguez, un destacado escritor e ingeniero asturiano. Con una exitosa carrera como ingeniero de telecomunicaciones, ha dedicado gran parte de su vida profesional a la ingeniería, alcanzando posiciones de prestigio en el sector. Paralelamente, su pasión por la literatura le ha llevado a escribir y publicar obras tanto en asturiano como en castellano, contribuyendo significativamente a la cultura literaria de Asturias. Este portfolio muestra su trayectoria dual como ingeniero y escritor, reflejando su compromiso con la tecnología y la preservación de la lengua y cultura asturianas.',
+      image: 'assets/project0.png',
+      url: 'https://carlosrodmor.github.io/portfolio-chema/',
+    },
+    {
       title: 'Ironhack Project',
       description:
         "My first project at Ironhack was a collaborative effort with a classmate, where we developed a platformer video game using JavaScript and the DOM. In this project, we focused on implementing the game's mechanics, controls, and interactive elements. To start the game, the player simply presses the 'Enter' key, and to reset or restart the game, the 'Space' key is used. This project was a great opportunity to deepen our understanding of JavaScript and DOM manipulation while also having fun creating a functional and engaging game.",
