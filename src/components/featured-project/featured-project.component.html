@@ -1,0 +1,35 @@
+<section class="featured-project" id="work">
+  <div class="featured-project__content">
+    <span class="featured-project__label">PROYECTO DESTACADO</span>
+    <h2 class="featured-project__title">{{ featuredProject.title }}</h2>
+    
+    <div class="featured-project__description-box">
+      <p class="featured-project__description">{{ featuredProject.description }}</p>
+    </div>
+
+    <div class="featured-project__tech-stack">
+      <span *ngFor="let tech of featuredProject.technologies" class="tech-tag">
+        {{ tech }}
+      </span>
+    </div>
+
+    <a [href]="featuredProject.url" 
+       target="_blank" 
+       class="featured-project__link"
+       rel="noopener noreferrer">
+      Visitar sitio
+      <svg xmlns="http://www.w3.org/2000/svg" 
+           width="24" 
+           height="24" 
+           viewBox="0 0 24 24" 
+           fill="none" 
+           stroke="currentColor" 
+           stroke-width="2" 
+           stroke-linecap="round" 
+           stroke-linejoin="round">
+        <line x1="7" y1="17" x2="17" y2="7"></line>
+        <polyline points="7 7 17 7 17 17"></polyline>
+      </svg>
+    </a>
+  </div>
+</section> 
