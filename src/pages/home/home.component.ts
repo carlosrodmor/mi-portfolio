@@ -6,6 +6,7 @@ import { AboutComponent } from '../../components/about/about.component';
 import { ProjectsComponent } from '../../components/projects/projects.component';
 import { ExperienceComponent } from '../../components/experience/experience.component';
 import { ScrollTopModule } from 'primeng/scrolltop';
+import { FeaturedProjectComponent } from '../../components/featured-project/featured-project.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
     AboutComponent,
     ProjectsComponent,
     ExperienceComponent,
+    FeaturedProjectComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],

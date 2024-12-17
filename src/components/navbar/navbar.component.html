@@ -8,7 +8,7 @@
   </div>
   <nav class="center-nav">
     <a (click)="scrollTo('about')">ABOUT ME</a>
-    <a (click)="scrollTo('projects')">WORK</a>
+    <a (click)="scrollTo('work')">WORK</a>
     <a (click)="scrollTo('experience-cv')">CV</a>
   </nav>
   <div class="right-section">
@@ -22,7 +22,7 @@
 </div>
 <div class="mobile-menu" [class.active]="isMenuOpen">
   <a (click)="scrollTo('about'); toggleMenu()">ABOUT ME</a>
-  <a (click)="scrollTo('projects'); toggleMenu()">WORK</a>
+  <a (click)="scrollTo('work'); toggleMenu()">WORK</a>
   <a (click)="scrollTo('experience-cv'); toggleMenu()">CV</a>
   <a (click)="sendEmail(); toggleMenu()">CONTACT ME</a>
 </div>
