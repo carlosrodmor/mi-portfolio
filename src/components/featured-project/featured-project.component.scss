@@ -377,26 +377,59 @@
 
     &__header {
       margin-bottom: 1.5rem;
+      position: relative;
+      padding-top: 1rem;
       
-      .dot {
-        width: 6px;
-        height: 6px;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+        background: linear-gradient(to bottom, 
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.4) 100%
+        );
+        z-index: -1;
       }
     }
 
     &__label {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       letter-spacing: 2px;
+      opacity: 0.9;
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+      .dot {
+        width: 6px;
+        height: 6px;
+        background-color: #00ff00;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+      }
     }
 
     &__title {
       font-size: 1.75rem;
       letter-spacing: -0.5px;
-      margin: 0.5rem 0;
+      margin: 0.75rem 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      font-weight: 300;
 
       &::after {
         height: 1px;
-        bottom: -5px;
+        bottom: -8px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.3) 50%,
+          transparent 100%
+        );
       }
     }
 
