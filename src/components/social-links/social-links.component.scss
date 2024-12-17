@@ -1,0 +1,40 @@
+.social-links {
+  position: fixed;
+  bottom: 0;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.social-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.social-link {
+  color: #ffffff;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.vertical-line {
+  width: 1px;
+  height: 90px;
+  background-color: #ffffff;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .social-links {
+    display: none;
+  }
+} 
