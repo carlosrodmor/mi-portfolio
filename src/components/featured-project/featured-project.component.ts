@@ -10,9 +10,9 @@ import { CommonModule } from '@angular/common';
 })
 export class FeaturedProjectComponent {
   featuredProject = {
-    title: 'OPPO Community España',
+    title: 'OPPO Community Spain',
     description:
-      'Plataforma comunitaria oficial de OPPO España. Un espacio digital donde los usuarios pueden compartir experiencias, resolver dudas y participar en eventos exclusivos.',
+      'Official community platform for OPPO Spain. A digital space where users can share experiences, solve doubts and participate in exclusive events.',
     technologies: ['Angular', 'TypeScript', 'RxJS', 'SCSS'],
     url: 'https://community.oppomobile.es/',
   };
