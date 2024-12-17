@@ -12,7 +12,7 @@ export class FeaturedProjectComponent {
   featuredProject = {
     title: 'OPPO Community Spain',
     description:
-      'Official OPPO Spain community platform. A digital space where users can share experiences, solve doubts and participate in exclusive events.',
+      'Official community platform for OPPO Spain. A digital space where users can share experiences, solve doubts and participate in exclusive events.',
     technologies: ['Angular', 'TypeScript', 'RxJS', 'SCSS'],
     url: 'https://community.oppomobile.es/',
   };
