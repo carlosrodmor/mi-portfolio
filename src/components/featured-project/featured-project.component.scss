@@ -1,8 +1,28 @@
+$background-color: #000000;
+$text-color: #ffffff;
+$transition-default: all 0.3s ease;
+$gradient-overlay: linear-gradient(
+  160deg,
+  rgba(255, 255, 255, 0.08) 0%,
+  rgba(255, 255, 255, 0.05) 20%,
+  rgba(255, 255, 255, 0.03) 40%,
+  rgba(0, 0, 0, 0) 80%
+);
+
+@mixin fade-gradient($direction) {
+  background: linear-gradient(
+    $direction,
+    $background-color 0%,
+    rgba(0, 0, 0, 0.8) 40%,
+    transparent 100%
+  );
+}
+
 .featured-project {
   display: flex;
   min-height: 100vh;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: $background-color;
+  color: $text-color;
   padding: 6rem 2rem;
   justify-content: center;
   align-items: center;
@@ -21,23 +41,13 @@
   }
 
   &::before {
+    @include fade-gradient(to bottom);
     top: 0;
-    background: linear-gradient(
-      to bottom,
-      #000000 0%,
-      rgba(0, 0, 0, 0.8) 40%,
-      transparent 100%
-    );
   }
 
   &::after {
+    @include fade-gradient(to top);
     bottom: 0;
-    background: linear-gradient(
-      to top,
-      #000000 0%,
-      rgba(0, 0, 0, 0.8) 40%,
-      transparent 100%
-    );
   }
 
   &__background {
@@ -56,13 +66,7 @@
       height: 150%;
       left: -25%;
       top: -25%;
-      background: linear-gradient(
-        160deg,
-        rgba(255, 255, 255, 0.08) 0%,
-        rgba(255, 255, 255, 0.05) 20%,
-        rgba(255, 255, 255, 0.03) 40%,
-        rgba(0, 0, 0, 0) 80%
-      );
+      background: $gradient-overlay;
       opacity: 0.5;
       transition: opacity 0.3s ease;
 
@@ -73,11 +77,11 @@
         height: 100%;
         background: linear-gradient(
           0deg,
-          #000000 0%,
+          $background-color 0%,
           rgba(255, 255, 255, 0.03) 20%,
           transparent 50%,
           rgba(255, 255, 255, 0.03) 80%,
-          #000000 100%
+          $background-color 100%
         );
       }
     }
@@ -129,12 +133,12 @@
         bottom: 0;
         background: linear-gradient(
           0deg,
-          #000000 0%,
+          $background-color 0%,
           rgba(0, 0, 0, 0.9) 5%,
           transparent 20%,
           transparent 80%,
           rgba(0, 0, 0, 0.9) 95%,
-          #000000 100%
+          $background-color 100%
         );
       }
     }
@@ -172,7 +176,7 @@
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: #ffffff;
+    color: $text-color;
     opacity: 0.7;
     margin-bottom: 1rem;
     display: flex;
@@ -315,7 +319,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    color: #ffffff;
+    color: $text-color;
     text-decoration: none;
     font-size: 1rem;
     padding: 1rem 2rem;
