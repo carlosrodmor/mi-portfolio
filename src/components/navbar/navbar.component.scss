@@ -1,13 +1,27 @@
 .custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   letter-spacing: 0.05em;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+
+  &.navbar-hidden {
+    transform: translateY(-100%);
+  }
 }
 
 .left-section,
@@ -19,17 +33,25 @@
 
 .left-section {
   .logo {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 500;
     margin-right: 1rem;
+    opacity: 0.95;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .location-time {
     display: flex;
     align-items: center;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 300;
     white-space: nowrap;
+    opacity: 0.7;
+    letter-spacing: 1.2px;
 
     @media (max-width: 768px) {
       display: none;
@@ -37,10 +59,12 @@
 
     .location {
       margin-right: 0.5rem;
+      font-weight: 400;
     }
 
     .time {
       margin-left: 0.5rem;
+      font-weight: 300;
     }
   }
 }
@@ -59,13 +83,18 @@
     color: #ffffff;
     text-decoration: none;
     margin: 0 1rem;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 400;
+    letter-spacing: 1.5px;
+    position: relative;
+    padding: 0.5rem 0;
+    opacity: 0.7;
     transition: all 0.3s ease;
 
     &:hover {
-      opacity: 0.7;
-      transform: translateY(-2px);
+      opacity: 1;
+      transform: translateY(-1px);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
   }
 }
@@ -81,18 +110,24 @@
   .lets-talk {
     color: #ffffff;
     text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
     transition: all 0.3s ease;
 
     &:hover {
-      opacity: 0.7;
-      transform: translateY(-2px);
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: none;
     }
   }
 }
 
 .menu-toggle {
+  z-index: 1001;
   display: none;
   flex-direction: column;
   justify-content: space-around;
@@ -102,7 +137,6 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 10;
 
   @media (max-width: 768px) {
     display: flex;
@@ -110,9 +144,10 @@
 
   .bar {
     width: 30px;
-    height: 3px;
+    height: 2px;
     background-color: #ffffff;
     transition: all 0.3s linear;
+    opacity: 0.9;
   }
 
   &.active {
@@ -129,36 +164,39 @@
 }
 
 .mobile-menu {
-  display: none;
-  flex-direction: column;
   position: fixed;
   top: 0;
   left: 0;
-  cursor: pointer;
-  height: 100vh;
-  width: 100%;
-  background-color: #000000;
-  padding-top: 5rem;
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(100%);
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 2rem;
+  backdrop-filter: blur(15px);
 
   &.active {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 
   a {
     color: #ffffff;
     text-decoration: none;
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 300;
+    margin: 1.5rem 0;
+    opacity: 0.7;
+    transition: all 0.3s ease;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      opacity: 1;
+      transform: translateY(-2px);
     }
-  }
-
-  @media (max-width: 768px) {
-    display: flex;
   }
 }

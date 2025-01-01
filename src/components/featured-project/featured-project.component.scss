@@ -31,7 +31,7 @@ $gradient-overlay: linear-gradient(
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     right: 0;
@@ -71,7 +71,7 @@ $gradient-overlay: linear-gradient(
       transition: opacity 0.3s ease;
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         width: 100%;
         height: 100%;
@@ -110,7 +110,7 @@ $gradient-overlay: linear-gradient(
       transition: opacity 0.3s ease;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -125,7 +125,7 @@ $gradient-overlay: linear-gradient(
       }
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -164,6 +164,17 @@ $gradient-overlay: linear-gradient(
 
     &:hover {
       transform: translateY(-5px) translateZ(0);
+    }
+
+    &:hover {
+      .project-image {
+        transform: perspective(1000px) rotateY(-15deg) translateZ(50px);
+        filter: brightness(1.2);
+      }
+
+      .project-info {
+        transform: perspective(1000px) rotateY(15deg) translateZ(50px);
+      }
     }
   }
 
@@ -383,15 +394,16 @@ $gradient-overlay: linear-gradient(
       margin-bottom: 1.5rem;
       position: relative;
       padding-top: 1rem;
-      
+
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         height: 120px;
-        background: linear-gradient(to bottom, 
+        background: linear-gradient(
+          to bottom,
           rgba(0, 0, 0, 0.8) 0%,
           rgba(0, 0, 0, 0.4) 100%
         );
@@ -472,7 +484,7 @@ $gradient-overlay: linear-gradient(
 
     &__tech-stack {
       margin: 1.5rem 0;
-      
+
       .category-label {
         font-size: 0.65rem;
         margin-bottom: 0.75rem;
@@ -486,9 +498,9 @@ $gradient-overlay: linear-gradient(
       gap: 0.4rem;
       justify-content: flex-start;
       padding: 0.25rem 0;
-      
+
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         right: 0;
         top: 0;
@@ -555,7 +567,7 @@ $gradient-overlay: linear-gradient(
     &__stats {
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
-      
+
       .stat {
         padding: 0.5rem;
         border-radius: 6px;
@@ -573,20 +585,21 @@ $gradient-overlay: linear-gradient(
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       position: relative;
-      
+
       &::-webkit-scrollbar {
         display: none;
       }
-      
+
       &::before {
-        content: '';
+        content: "";
         padding-right: 1.25rem;
       }
 
       &::after {
         width: 48px;
-        background: linear-gradient(to right, 
-          rgba(0, 0, 0, 0), 
+        background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0),
           rgba(0, 0, 0, 0.98) 70%
         );
       }
@@ -598,7 +611,7 @@ $gradient-overlay: linear-gradient(
       flex-shrink: 0;
       position: relative;
       z-index: 2;
-      
+
       &:active {
         transform: scale(0.98);
       }
@@ -610,7 +623,7 @@ $gradient-overlay: linear-gradient(
         background-size: 30px 30px;
         animation: gridMove 80s linear infinite;
       }
-      
+
       .gradient-overlay {
         opacity: 0.12;
         background: linear-gradient(
@@ -634,4 +647,3 @@ $gradient-overlay: linear-gradient(
     transform: rotate(45deg) translateZ(0) translateY(0);
   }
 }
-
