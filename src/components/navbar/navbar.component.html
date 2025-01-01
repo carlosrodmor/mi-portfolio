@@ -1,6 +1,6 @@
 <div class="custom-navbar" [class.navbar-hidden]="isNavbarHidden">
   <div class="left-section">
-    <span class="logo">CR</span>
+    <span class="logo" (click)="reloadHome()" style="cursor: pointer">CR</span>
     <div class="location-time">
       <span class="location">MADRID, SPAIN</span>
       <span class="time">— {{ currentTime }}</span>

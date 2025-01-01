@@ -8,6 +8,7 @@ import {
   HostListener,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +26,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private timerInterval: any;
   private isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+  constructor(
+    @Inject(PLATFORM_ID) platformId: Object,
+    private router: Router
+  ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.updateTime();
   }
@@ -34,7 +38,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   onWindowScroll() {
     if (this.isBrowser) {
       const currentScroll = window.pageYOffset;
-      this.isNavbarHidden = currentScroll > this.lastScrollPosition && currentScroll > 100;
+      this.isNavbarHidden =
+        currentScroll > this.lastScrollPosition && currentScroll > 100;
       this.lastScrollPosition = currentScroll;
     }
   }
@@ -83,5 +88,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  reloadHome() {
+    this.router.navigate(['/'])
+      .then(() => {
+        if (this.isBrowser) {
+          window.scrollTo(0, 0);
+        }
+      });
   }
 }
