@@ -110,18 +110,35 @@
   .lets-talk {
     color: #ffffff;
     text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    padding: 0.8rem 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 1.2px;
+    padding: 0.6rem 1.2rem;
+    opacity: 0.8;
     transition: all 0.3s ease;
+    position: relative;
+    background: transparent;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: none;
+      opacity: 1;
+
+      &::before {
+        transform: translate(3px, 3px);
+      }
+
+      &::after {
+        transform: translate(-3px, -3px);
+      }
     }
   }
 }
