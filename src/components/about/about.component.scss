@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-primary);
 }
 
 .about {
@@ -8,7 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 6rem 3rem;
   box-sizing: border-box;
   background: linear-gradient(
     180deg,
@@ -18,141 +18,179 @@ body {
 }
 
 .about-content {
-  max-width: 1200px;
+  max-width: 1000px;
   width: 100%;
 }
 
 .about-me-title {
-  font-size: clamp(1.8rem, 5vw, 3.5rem);
-  font-weight: 200;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 300;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   position: relative;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.01em;
 
   &::after {
     content: "";
     position: absolute;
-    bottom: -10px;
+    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
+    width: 40px;
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.5),
-      transparent
-    );
+    background: var(--color-text-muted);
   }
+}
+
+.text-container {
+  padding: 0 1rem;
+  position: relative;
 }
 
 .about-me-english,
 .about-me-spanish {
-  line-height: 1.6;
+  line-height: 1.8;
   text-align: left;
-  opacity: 0.9;
+  letter-spacing: 0.01em;
 }
 
 .about-me-english {
-  font-size: clamp(0.9rem, 3vw, 1.2rem);
-  margin-bottom: 2rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  margin-bottom: 3rem;
+  opacity: 0.85;
+  font-weight: 300;
+
+  &::first-letter {
+    font-size: 2em;
+    font-family: var(--font-accent);
+    padding-right: 0.1em;
+    line-height: 0.8;
+    float: left;
+    opacity: 0.9;
+  }
 }
 
 .about-me-spanish {
-  font-size: clamp(0.75rem, 2.5vw, 0.9rem);
-  opacity: 0.7;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  opacity: 0.65;
+  font-weight: 300;
+  position: relative;
+  padding-top: 2rem;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 1px;
+    background-color: var(--color-border);
+  }
 }
 
-.bold-text {
-  font-weight: 500;
-  color: #fff;
-  opacity: 1;
+.highlight {
+  font-weight: 400;
+  color: var(--color-accent);
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right,
+                               rgba(255, 255, 255, 0),
+                               rgba(255, 255, 255, 0.2),
+                               rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+
+  &:hover:after {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
   .about {
-    padding: 3rem 1.5rem;
+    padding: 4rem 2rem;
     align-items: flex-start;
-    background: transparent;
   }
 
   .about-content {
     position: relative;
-    padding: 1.5rem;
-    background: rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
   }
 
   .about-me-title {
-    font-size: 1.75rem;
-    margin-bottom: 1.75rem;
-    letter-spacing: 2px;
-    font-weight: 300;
-    
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    letter-spacing: 0;
+
     &::after {
       width: 30px;
-      height: 2px;
-      bottom: -8px;
+      bottom: -15px;
     }
   }
 
-  .about-me-english,
-  .about-me-spanish {
-    padding: 0 0.5rem;
-    letter-spacing: 0.2px;
+  .text-container {
+    padding: 0;
   }
 
   .about-me-english {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
     line-height: 1.7;
+
+    &::first-letter {
+      font-size: 1.8em;
+    }
   }
 
   .about-me-spanish {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     line-height: 1.6;
-    opacity: 0.65;
-  }
+    opacity: 0.6;
+    padding-top: 1.5rem;
 
-  .bold-text {
-    font-weight: 500;
-    background: linear-gradient(90deg, #fff, #ccc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding: 0 2px;
+    &:before {
+      width: 40px;
+    }
   }
 }
 
 @media (max-width: 480px) {
   .about {
-    padding: 2rem 1rem;
+    padding: 3rem 1.5rem;
   }
 
   .about-content {
-    padding: 1.25rem;
-    margin: 0;
-    border-radius: 8px;
+    padding: 1.5rem;
+    border-radius: 6px;
   }
 
   .about-me-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
 
-  .about-me-english,
-  .about-me-spanish {
-    padding: 0;
+    &::after {
+      width: 25px;
+      bottom: -12px;
+    }
   }
 
   .about-me-english {
-    font-size: 0.9rem;
-    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
   }
 
   .about-me-spanish {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 }

@@ -1,8 +1,7 @@
 <section class="projects" id="other-projects">
-  <h2 class="projects__title">OTHER PROJECTS</h2>
+  <h2 class="projects__title accent-text">Other Projects</h2>
   <div class="projects__instructions">
-    <p>To view the next set of projects, simply drag in the image to the right.</p>
-    <p>This projects were not designed to be responsive.</p>
+    <p>To view the next set of projects, simply drag the image to navigate through the collection.</p>
   </div>
   <swiper-container [init]="false" #swiper>
     <swiper-slide *ngFor="let project of projects; let i = index">
@@ -10,7 +9,7 @@
         <div class="project-content">
           <h3 class="project-content__title">{{ project.title }}</h3>
           <p class="project-content__description">{{ project.description }}</p>
-          <a href={{project.url}} class="project-content__link" target="_blank">Visit the website</a>
+          <a href={{project.url}} class="project-content__link" target="_blank">View Project</a>
         </div>
       </div>
     </swiper-slide>
