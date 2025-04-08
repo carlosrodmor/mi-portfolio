@@ -6,13 +6,12 @@ import {
   ElementRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InProgressBannerComponent } from '../in-progress-banner/in-progress-banner.component';
 import { register } from 'swiper/element/bundle';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, InProgressBannerComponent],
+  imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
@@ -25,6 +24,13 @@ export class ProjectsComponent implements OnInit {
   }
 
   projects = [
+    {
+      title: 'Cocktail DB',
+      description:
+        'This project was created with Angular to demonstrate skills such as the use of RxJS, state management, reusable components, and other advanced features of the framework. Through this development, I was able to apply reactive programming knowledge and create a modern, functional interface that leverages the advantages of Angular. This project reflects my commitment to continuous learning of front-end technologies and my ability to develop dynamic, responsive web applications using modern frameworks.',
+      image: 'assets/project4.png',
+      url: 'https://cocktail-db-dv.netlify.app/',
+    },
     {
       title: 'José M. Rodríguez Portfolio',
       description:
@@ -46,13 +52,6 @@ export class ProjectsComponent implements OnInit {
       image: 'assets/project2.png',
       url: 'https://code-connectt.netlify.app/',
     },
-    // {
-    //   title: 'React Portfolio',
-    //   description:
-    //     'This portfolio was developed using React, a skill I acquired during my training at Ironhack. Through this project, I was able to apply the front-end knowledge I gained and create a modern, functional interface. Now, my focus has shifted towards Angular, and the current version of this portfolio, from which you are reading this text, has been built using Angular. This transition not only reflects my ongoing commitment to learning new tools and technologies but also demonstrates my ability to adapt and create dynamic, responsive web applications using different frameworks.',
-    //   image: 'assets/project3.png',
-    //   url: 'https://carlosrodmor.github.io/react-portfolio',
-    // },
   ];
 
   swiperParams = {
