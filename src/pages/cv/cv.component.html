@@ -1,10 +1,113 @@
 <div class="background-container">
-    <img src="../../assets/Saad Moosajee - Step-print.gif" alt="Collage background GIF" class="background-cv">
+  <div id="particles-js"></div>
 </div>
 <div class="content">
-    <img src="../../assets/EN-Carlos-Rodríguez-Morales-CV.webp" alt="Curriculum Vitae" class="portfolio-image">
+  <div class="cv-container">
+    <section class="cv-section" id="objective">
+      <h2>Objective</h2>
+      <p>I am an enthusiastic and proactive web developer with a strong understanding of <span
+          class="highlight">JavaScript and TypeScript</span> and frameworks as React, Angular and Vue and back-end
+        technologies such as Node and MongoDB. Committed to continuous learning, I excel at problem solving and <span
+          class="highlight">adapting quickly</span> to new challenges. My effective <span
+          class="highlight">communication</span> and <span class="highlight">teamwork skills</span> are evident both in
+        professional settings and in my passion for sports and outdoor activities.</p>
+    </section>
+
+    <section class="cv-section" id="experience">
+      <h2>Experience</h2>
+      <div class="experience-item">
+        <div class="job-title">FRONT END DEVELOPER</div>
+        <div class="company">Habber Tec S.L. | Nov 2024 - Present</div>
+        <div class="tech-stack">Vue, TypeScript and IBM BAW.</div>
+      </div>
+
+      <div class="experience-item">
+        <div class="job-title">FRONT END DEVELOPER</div>
+        <div class="company">Accuro Altim S.L. Las Rozas, Madrid | Feb 2024 - Nov 2024</div>
+        <div class="tech-stack">Angular, TypeScript and ABP.io</div>
+      </div>
+
+      <div class="experience-item">
+        <div class="job-title">WAITER</div>
+        <div class="company">AGA Catering. Las Rozas, Madrid | Jun 2022 - Sep 2023</div>
+      </div>
+
+      <div class="experience-item">
+        <div class="job-title">ROBOTICS TEACHER</div>
+        <div class="company">Rockbotic. Madrid | Jan 2018 - Jun 2018</div>
+        <p>I taught elementary school children using tools like Scratch and Arduino.</p>
+      </div>
+    </section>
+
+    <section class="cv-section" id="education">
+      <h2>Education</h2>
+      <div class="education-item">
+        <div class="degree">FULL STACK WEB DEVELOPER</div>
+        <div class="school">Ironhack. Madrid | Sep 2023 - Dec 2023</div>
+        <p>I completed a three-month bootcamp where I worked on projects using React, Tailwind, Bootstrap, Node.js, and
+          MongoDB.</p>
+      </div>
+
+      <div class="education-item">
+        <div class="degree">Project 1 - Platform video game</div>
+        <p>Work on DOM manipulation and OOP.</p>
+      </div>
+
+      <div class="education-item">
+        <div class="degree">Project 2 - Film catalogue</div>
+        <p>We built a website using tools like Node.js with Express in the backend, Axios for the TMDB API calls and
+          Handlebars for the frontend.</p>
+      </div>
+
+      <div class="education-item">
+        <div class="degree">Final Project - Private Lessons Website</div>
+        <p>We created a full stack website using the following tools:</p>
+        <div class="tech-details">
+          <div>Front-end: HTML5, CSS3, JavaScript, Bootstrap, React.</div>
+          <div>Back-end: Node.js, Express, Axios, MongoDB.</div>
+        </div>
+      </div>
+
+      <div class="education-item">
+        <div class="degree">C1 APTIS ESOL</div>
+        <div class="school">British Council. Madrid | Jul 2023</div>
+      </div>
+
+      <div class="education-item">
+        <div class="degree">BACHELOR'S DEGREE IN BILINGUAL PRIMARY EDUCATION</div>
+        <div class="school">Universidad Antonio de Nebrija. Madrid | Sep 2016 - Jun 2020</div>
+      </div>
+
+      <div class="education-item">
+        <div class="degree">DIPLOMA IN CINEMATOGRAPHY</div>
+        <div class="school">ECAM. Madrid | Sep 2014 - Jun 2016</div>
+      </div>
+    </section>
+
+    <section class="cv-section" id="skills">
+      <h2>Skills</h2>
+      <div class="skills-group">
+        <div class="skill-category">Front-end:</div>
+        <div class="skills">HTML5, CSS3, JavaScript, Bootstrap, React</div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skill-category">Back-end:</div>
+        <div class="skills">Node.js, Express, Axios, MongoDB</div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skill-category">Others:</div>
+        <div class="skills">Native English, Spanish B2-C1</div>
+        <div class="skills">British Council, Madrid | Jun 2021</div>
+        <div class="skills">Universidad Autónoma de Madrid, Madrid</div>
+        <div class="skills">Erasmus+, Universidad de Granada</div>
+        <div class="skills">INEM, Madrid | Sep 2014 - Jun 2016</div>
+      </div>
+    </section>
+  </div>
 </div>
 <button class="fixed-button" (click)="goBack()">
-    <fa-icon [icon]="faArrowLeft" class="back-arrow"></fa-icon>
-    <span>Volver</span>
+  <fa-icon [icon]="faArrowLeft" class="back-arrow"></fa-icon>
+  <span>Back</span>
 </button>

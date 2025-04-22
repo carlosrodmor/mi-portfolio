@@ -1,9 +1,17 @@
 $content-background-color: rgba(255, 255, 255, 0);
 $content-padding: 20px;
-$portfolio-max-width: 800px;
+$portfolio-max-width: 900px;
 $button-size: 50px;
 $button-margin: 20px;
 
+// Variables de colores
+$color-bg: var(--color-bg);
+$color-text: var(--color-text);
+$color-text-muted: var(--color-text-muted);
+$color-accent: var(--color-accent);
+$color-border: var(--color-border);
+
+// Mixins
 @mixin fullsize {
   width: 100%;
   height: 100%;
@@ -14,6 +22,36 @@ $button-margin: 20px;
   display: block;
 }
 
+@mixin section-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+// Animaciones
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes borderPulse {
+  0% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+// Estilos generales
 body,
 html {
   margin: 0;
@@ -29,37 +67,224 @@ html {
   @include fullsize;
   z-index: -1;
   overflow: hidden;
+  background-color: $color-bg;
+}
 
-  .background-cv {
-    @include fullsize;
-    object-fit: cover;
-  }
+#particles-js {
+  @include fullsize;
+  z-index: 1;
+  background-color: $color-bg;
+  opacity: 0.8;
 }
 
 .content {
   position: relative;
-  z-index: 1;
-  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 2;
   padding: $content-padding;
   box-sizing: border-box;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+// Estilos del CV
+.cv-container {
+  width: 100%;
+  max-width: $portfolio-max-width;
+  background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  color: $color-text;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  animation: borderPulse 4s infinite alternate;
+  max-height: 85vh;
+  overflow-y: auto;
 
-  .portfolio-image {
-    width: 100%;
-    max-width: $portfolio-max-width;
-    @include center-block;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
 
-    &:hover {
-      transform: scale(1.02);
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+.cv-section {
+  position: relative;
+  @include section-fade-in;
+
+  &#objective {
+    animation-delay: 0.1s;
+  }
+
+  &#experience {
+    animation-delay: 0.3s;
+  }
+
+  &#education {
+    animation-delay: 0.5s;
+  }
+
+  &#skills {
+    animation-delay: 0.7s;
+  }
+
+  h2 {
+    font-family: var(--font-accent);
+    font-weight: 300;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    color: $color-accent;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, $color-accent, transparent);
+    }
+  }
+
+  p {
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: $color-text-muted;
+
+    .highlight {
+      color: $color-accent;
+      font-weight: 400;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 1px;
+        background-color: rgba(226, 226, 226, 0.3);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        transform-origin: left;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
     }
   }
 }
 
+// Estilos de experiencia
+.experience-item,
+.education-item {
+  margin-bottom: 20px;
+  padding-left: 15px;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: $color-accent;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .job-title,
+  .degree {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .company,
+  .school {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: $color-text-muted;
+    margin-bottom: 2px;
+  }
+
+  .period {
+    font-size: 0.8rem;
+    color: $color-text-muted;
+    opacity: 0.7;
+    margin-bottom: 6px;
+  }
+
+  .tech-stack {
+    font-size: 0.85rem;
+    color: rgba(226, 226, 226, 0.6);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  p {
+    margin-top: 8px;
+    font-size: 0.85rem;
+  }
+}
+
+// Estilos de habilidades
+.skills-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .skill-category {
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-right: 10px;
+    min-width: 90px;
+  }
+
+  .skills {
+    font-size: 0.85rem;
+    color: $color-text-muted;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+}
+
+// Botón de volver
 .fixed-button {
   position: fixed;
   top: $button-margin;
@@ -69,7 +294,7 @@ html {
   height: 40px;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.6);
-  color: white;
+  color: $color-text;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   cursor: pointer;
@@ -80,7 +305,7 @@ html {
   backdrop-filter: blur(8px);
   padding: 0 15px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   &:hover {
     background-color: rgba(0, 0, 0, 0.7);
     border-color: rgba(255, 255, 255, 0.3);
@@ -107,6 +332,7 @@ html {
   }
 }
 
+// Media queries
 @media (max-width: 768px) {
   .fixed-button {
     top: 15px;
@@ -115,7 +341,7 @@ html {
     min-width: auto;
     padding: 0 12px;
     font-size: 13px;
-    
+
     .back-arrow {
       margin-right: 6px;
       font-size: 13px;
@@ -125,9 +351,17 @@ html {
   .content {
     padding: 15px;
     padding-top: 70px;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .cv-container {
+    padding: 25px;
+    border-radius: 8px;
+  }
+
+  .cv-section {
+    h2 {
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -148,7 +382,61 @@ html {
   .content {
     padding: 12px;
     padding-top: 60px;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .cv-container {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .cv-section {
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+
+  .experience-item,
+  .education-item {
+    padding-left: 12px;
+
+    .job-title,
+    .degree {
+      font-size: 0.95rem;
+    }
+
+    .company,
+    .school {
+      font-size: 0.85rem;
+    }
+  }
+
+  .skills-group {
+    flex-direction: column;
+
+    .skill-category {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.tech-details {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  color: $color-text-muted;
+
+  div {
+    margin-bottom: 4px;
+    position: relative;
+    padding-left: 10px;
+
+    &:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: $color-accent;
+      opacity: 0.7;
+    }
   }
 }

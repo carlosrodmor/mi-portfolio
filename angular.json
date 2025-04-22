@@ -31,7 +31,11 @@
               "node_modules/primeicons/primeicons.css",
               "node_modules/@fortawesome/fontawesome-svg-core/styles.css"
             ],
-            "scripts": ["src/assets/js/particles.min.js"],
+            "scripts": [
+              "src/assets/js/particles.min.js",
+              "src/assets/js/particles-config.js",
+              "src/assets/js/particles-cv-config.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
