@@ -21,10 +21,10 @@ particlesJS.load = function (tag_id, path_json, callback) {
 window.particlesConfig = {
   particles: {
     number: {
-      value: 80,
+      value: 60,
       density: {
         enable: true,
-        value_area: 800,
+        value_area: 900,
       },
     },
     color: {
@@ -41,21 +41,21 @@ window.particlesConfig = {
       },
     },
     opacity: {
-      value: 0.5,
+      value: 0.3,
       random: true,
       anim: {
         enable: true,
-        speed: 1,
+        speed: 0.5,
         opacity_min: 0.1,
         sync: false,
       },
     },
     size: {
-      value: 3,
+      value: 2,
       random: true,
       anim: {
         enable: true,
-        speed: 3,
+        speed: 1.5,
         size_min: 0.1,
         sync: false,
       },
@@ -64,12 +64,12 @@ window.particlesConfig = {
       enable: true,
       distance: 150,
       color: "#ffffff",
-      opacity: 0.4,
-      width: 1,
+      opacity: 0.2,
+      width: 0.8,
     },
     move: {
       enable: true,
-      speed: 2,
+      speed: 0.8,
       direction: "none",
       random: true,
       straight: false,
@@ -97,9 +97,9 @@ window.particlesConfig = {
     },
     modes: {
       grab: {
-        distance: 140,
+        distance: 120,
         line_linked: {
-          opacity: 1,
+          opacity: 0.4,
         },
       },
       bubble: {
@@ -114,7 +114,7 @@ window.particlesConfig = {
         duration: 0.4,
       },
       push: {
-        particles_nb: 4,
+        particles_nb: 2,
       },
       remove: {
         particles_nb: 2,
