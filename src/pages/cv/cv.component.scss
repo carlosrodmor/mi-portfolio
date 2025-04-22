@@ -1,6 +1,6 @@
 $content-background-color: rgba(255, 255, 255, 0);
 $content-padding: 20px;
-$portfolio-max-width: 900px;
+$portfolio-max-width: 800px;
 $button-size: 50px;
 $button-margin: 20px;
 
@@ -51,6 +51,15 @@ $color-border: var(--color-border);
   }
 }
 
+@keyframes levelFill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 // Estilos generales
 body,
 html {
@@ -94,22 +103,22 @@ html {
 .cv-container {
   width: 100%;
   max-width: $portfolio-max-width;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(10px);
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  padding: 40px;
+  padding: 35px;
   color: $color-text;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
   animation: borderPulse 4s infinite alternate;
   max-height: 85vh;
   overflow-y: auto;
 
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
 
   &::-webkit-scrollbar-track {
@@ -150,8 +159,8 @@ html {
   h2 {
     font-family: var(--font-accent);
     font-weight: 300;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
     position: relative;
     display: inline-block;
     color: $color-accent;
@@ -159,7 +168,7 @@ html {
     &::after {
       content: "";
       position: absolute;
-      bottom: -6px;
+      bottom: -5px;
       left: 0;
       width: 100%;
       height: 1px;
@@ -171,7 +180,7 @@ html {
     font-weight: 300;
     line-height: 1.6;
     margin-bottom: 15px;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: $color-text-muted;
 
     .highlight {
@@ -202,8 +211,8 @@ html {
 // Estilos de experiencia
 .experience-item,
 .education-item {
-  margin-bottom: 20px;
-  padding-left: 15px;
+  margin-bottom: 18px;
+  padding-left: 12px;
   position: relative;
 
   &:before {
@@ -211,8 +220,8 @@ html {
     position: absolute;
     left: 0;
     top: 8px;
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     background-color: $color-accent;
   }
@@ -224,63 +233,176 @@ html {
   .job-title,
   .degree {
     font-weight: 500;
-    font-size: 1rem;
-    margin-bottom: 4px;
+    font-size: 0.95rem;
+    margin-bottom: 3px;
     letter-spacing: 0.5px;
   }
 
   .company,
   .school {
     font-style: italic;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: $color-text-muted;
     margin-bottom: 2px;
+  }
+
+  .tech-stack {
+    font-size: 0.8rem;
+    color: rgba(226, 226, 226, 0.6);
+    margin-bottom: 5px;
+    font-style: italic;
   }
 
   .period {
     font-size: 0.8rem;
     color: $color-text-muted;
     opacity: 0.7;
-    margin-bottom: 6px;
-  }
-
-  .tech-stack {
-    font-size: 0.85rem;
-    color: rgba(226, 226, 226, 0.6);
-    margin-bottom: 6px;
-    font-style: italic;
+    margin-bottom: 5px;
   }
 
   p {
-    margin-top: 8px;
-    font-size: 0.85rem;
+    margin-top: 6px;
+    font-size: 0.82rem;
   }
 }
 
-// Estilos de habilidades
-.skills-group {
-  margin-bottom: 15px;
+.tech-details {
+  margin-top: 8px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  color: $color-text-muted;
+
+  div {
+    margin-bottom: 3px;
+    position: relative;
+    padding-left: 8px;
+
+    &:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: $color-accent;
+      opacity: 0.7;
+    }
+  }
+}
+
+// Estilos para la sección de habilidades
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.skill-group {
+  h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: $color-accent;
+    position: relative;
+    display: inline-block;
+    padding-right: 20px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 30px;
+      height: 1px;
+      background-color: rgba(226, 226, 226, 0.3);
+    }
+  }
+}
+
+.skill-tags {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  gap: 6px;
+}
+
+.skill-tag {
+  padding: 4px 10px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: $color-text-muted;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    color: $color-text;
+  }
+}
+
+// Estilos para la sección de idiomas
+.languages {
+  margin-top: 5px;
+}
+
+.language-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  .skill-category {
-    font-weight: 500;
+  .language-name {
+    font-weight: 400;
     font-size: 0.9rem;
-    margin-right: 10px;
-    min-width: 90px;
+    width: 80px;
+    color: $color-text;
   }
 
-  .skills {
-    font-size: 0.85rem;
-    color: $color-text-muted;
-    display: flex;
-    flex-wrap: wrap;
+  .language-level {
     flex: 1;
+    display: flex;
+    align-items: center;
+
+    .level-bar {
+      height: 4px;
+      border-radius: 2px;
+      margin-right: 10px;
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.05);
+      width: 130px;
+      overflow: hidden;
+
+      &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          $color-accent,
+          rgba(226, 226, 226, 0.6)
+        );
+        border-radius: 2px;
+        animation: levelFill 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        animation-delay: 1s;
+      }
+
+      &.native::after {
+        width: 100%;
+      }
+
+      &.c1::after {
+        width: 95%;
+      }
+    }
+
+    .level-text {
+      font-size: 0.8rem;
+      color: $color-text-muted;
+      margin-left: 5px;
+    }
   }
 }
 
@@ -290,26 +412,26 @@ html {
   top: $button-margin;
   left: $button-margin;
   width: auto;
-  min-width: 100px;
-  height: 40px;
+  min-width: 90px;
+  height: 36px;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.6);
   color: $color-text;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
+  border-radius: 18px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(8px);
-  padding: 0 15px;
+  padding: 0 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.7);
     border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
     .back-arrow {
       transform: translateX(-3px);
@@ -317,8 +439,8 @@ html {
   }
 
   .back-arrow {
-    margin-right: 8px;
-    font-size: 14px;
+    margin-right: 7px;
+    font-size: 13px;
     transition: transform 0.3s ease;
   }
 
@@ -337,31 +459,41 @@ html {
   .fixed-button {
     top: 15px;
     left: 15px;
-    height: 36px;
+    height: 34px;
     min-width: auto;
     padding: 0 12px;
-    font-size: 13px;
+    font-size: 12px;
 
     .back-arrow {
       margin-right: 6px;
-      font-size: 13px;
+      font-size: 12px;
     }
   }
 
   .content {
     padding: 15px;
-    padding-top: 70px;
+    padding-top: 65px;
   }
 
   .cv-container {
     padding: 25px;
     border-radius: 8px;
+    gap: 22px;
   }
 
   .cv-section {
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.45rem;
     }
+  }
+
+  .skill-tag {
+    padding: 3px 9px;
+    font-size: 0.78rem;
+  }
+
+  .language-item .language-level .level-bar {
+    width: 100px;
   }
 }
 
@@ -369,23 +501,23 @@ html {
   .fixed-button {
     top: 12px;
     left: 12px;
-    height: 32px;
+    height: 30px;
     padding: 0 10px;
-    font-size: 12px;
-    border-radius: 16px;
+    font-size: 11px;
+    border-radius: 15px;
 
     .back-arrow {
-      font-size: 12px;
+      font-size: 11px;
     }
   }
 
   .content {
     padding: 12px;
-    padding-top: 60px;
+    padding-top: 55px;
   }
 
   .cv-container {
-    padding: 20px;
+    padding: 18px;
     gap: 20px;
   }
 
@@ -397,46 +529,36 @@ html {
 
   .experience-item,
   .education-item {
-    padding-left: 12px;
+    padding-left: 10px;
 
     .job-title,
     .degree {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     .company,
     .school {
+      font-size: 0.82rem;
+    }
+  }
+
+  .skill-tags {
+    gap: 5px;
+  }
+
+  .skill-tag {
+    padding: 3px 8px;
+    font-size: 0.75rem;
+  }
+
+  .language-item {
+    .language-name {
+      width: 70px;
       font-size: 0.85rem;
     }
-  }
 
-  .skills-group {
-    flex-direction: column;
-
-    .skill-category {
-      margin-bottom: 5px;
-    }
-  }
-}
-
-.tech-details {
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-bottom: 10px;
-  font-size: 0.85rem;
-  color: $color-text-muted;
-
-  div {
-    margin-bottom: 4px;
-    position: relative;
-    padding-left: 10px;
-
-    &:before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: $color-accent;
-      opacity: 0.7;
+    .language-level .level-bar {
+      width: 80px;
     }
   }
 }
