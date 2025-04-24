@@ -394,7 +394,7 @@ html {
       }
 
       &.c1::after {
-        width: 95%;
+        width: 85%;
       }
     }
 
@@ -404,6 +404,14 @@ html {
       margin-left: 5px;
     }
   }
+}
+
+.level-bar.native::after {
+  width: 100% !important;
+}
+
+.level-bar.c1::after {
+  width: 85% !important;
 }
 
 // Botón de volver
