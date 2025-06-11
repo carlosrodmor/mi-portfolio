@@ -23,40 +23,41 @@ export class UnifiedProjectsComponent implements OnInit {
     register();
   }
 
-  // Proyecto destacado principal
+  // Featured project
   featuredProject = {
     id: 'featured',
-    title: 'OPPO Community Spain',
+    title: 'Cocktail DB',
     description:
-      'Plataforma oficial de la comunidad OPPO España. Un espacio digital donde los usuarios pueden compartir experiencias, resolver dudas y participar en eventos exclusivos.',
-    technologies: ['Angular', 'TypeScript', 'RxJS', 'SCSS'],
-    features: ['Diseño Responsivo', 'Alto Rendimiento', 'UI/UX Moderna'],
-    url: 'https://community.oppomobile.es/',
-    image: 'assets/project0.png',
+      'This project was created with Angular to demonstrate skills such as the use of RxJS, state management, reusable components, and other advanced features of the framework. Through this development, I was able to apply reactive programming knowledge.',
+    technologies: ['Angular', 'RxJS', 'TypeScript', 'API Integration'],
+    features: ['Responsive Design', 'High Performance', 'Modern UI/UX'],
+    url: 'https://cocktail-db-dv.netlify.app/',
+    image: 'assets/project4.png',
     stats: {
-      visits: '1K+',
-      features: '20+',
+      visits: '2K+',
+      features: '15+',
       support: '24/7',
     },
   };
 
-  // Otros proyectos
+  // Other projects
   otherProjects = [
     {
-      id: 'cocktail-db',
-      title: 'Cocktail DB',
+      id: 'oppo-community',
+      title: 'OPPO Community Spain',
       description:
-        'Aplicación Angular que demuestra habilidades como el uso de RxJS, gestión de estado, componentes reutilizables y otras características avanzadas del framework.',
-      technologies: ['Angular', 'RxJS', 'TypeScript', 'API Integration'],
-      image: 'assets/project4.png',
-      url: 'https://cocktail-db-dv.netlify.app/',
+        'Official community platform for OPPO Spain. A digital space where users can share experiences, solve doubts and participate in exclusive events.',
+      technologies: ['Angular', 'TypeScript', 'RxJS', 'SCSS'],
+      image:
+        'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      url: 'https://community.oppomobile.es/',
     },
     {
       id: 'portfolio-chema',
       title: 'José M. Rodríguez Portfolio',
       description:
-        'Portfolio personal de José M. Rodríguez, prominente escritor e ingeniero asturiano con una carrera exitosa en telecomunicaciones y literatura.',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
+        'Personal portfolio of José M. Rodríguez, a prominent Asturian writer and engineer. With a successful career as a telecommunications engineer, he has dedicated much of his professional life to engineering.',
+      technologies: ['Vue 3', 'JavaScript', 'CSS', 'Responsive Design'],
       image: 'assets/project0.png',
       url: 'https://carlosrodmor.github.io/portfolio-chema/',
     },
@@ -64,7 +65,7 @@ export class UnifiedProjectsComponent implements OnInit {
       id: 'octopus-game',
       title: 'Ironhack Project',
       description:
-        'Mi primer proyecto en Ironhack: un videojuego de plataformas desarrollado con JavaScript y DOM, enfocado en mecánicas de juego y elementos interactivos.',
+        'My first project at Ironhack was a collaborative effort with a classmate, where we developed a platformer video game using JavaScript and the DOM.',
       technologies: ['JavaScript', 'DOM', 'Game Development', 'CSS'],
       image: 'assets/project1.png',
       url: 'https://carlosrodmor.github.io/octopus-game/',
@@ -73,7 +74,7 @@ export class UnifiedProjectsComponent implements OnInit {
       id: 'code-connect',
       title: 'Final Project Ironhack',
       description:
-        'Aplicación web full-stack para reservar clases privadas de programación, desarrollada con el stack MERN.',
+        'For our final project at Ironhack, I teamed up with two friends to create a full-stack web application for booking private programming lessons using the MERN stack.',
       technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
       image: 'assets/project2.png',
       url: 'https://code-connectt.netlify.app/',
