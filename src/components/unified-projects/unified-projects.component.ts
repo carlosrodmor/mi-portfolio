@@ -49,7 +49,7 @@ export class UnifiedProjectsComponent implements OnInit {
         'Official community platform for OPPO Spain. A digital space where users can share experiences, solve doubts and participate in exclusive events.',
       technologies: ['Angular', 'TypeScript', 'RxJS', 'SCSS'],
       image:
-        'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1601972602237-8c79241e468b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       url: 'https://community.oppomobile.es/',
     },
     {

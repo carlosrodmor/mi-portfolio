@@ -166,6 +166,11 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         height: 100%;
         object-fit: cover;
         transition: $transition;
+        filter: grayscale(100%);
+
+        &:hover {
+          filter: grayscale(0%);
+        }
       }
 
       .image-overlay {
@@ -184,6 +189,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
       &:hover img {
         transform: scale(1.05);
+        filter: grayscale(0%);
       }
     }
 
