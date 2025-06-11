@@ -1,0 +1,98 @@
+<section class="unified-projects" id="work">
+    <!-- Header Section -->
+    <div class="projects-header">
+        <h2 class="projects-title">Projects</h2>
+        <p class="projects-subtitle">A selection of my most outstanding work</p>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="projects-container">
+
+        <!-- Project Display Area -->
+        <div class="project-display">
+            <div class="project-card" [class.featured]="selectedProject.id === 'featured'">
+
+                <!-- Project Image -->
+                <div class="project-image">
+                    <img [src]="selectedProject.image || 'assets/placeholder.png'" [alt]="selectedProject.title"
+                        loading="lazy">
+                    <div class="image-overlay"></div>
+                </div>
+
+                <!-- Project Info -->
+                <div class="project-info">
+                    <div class="project-badge" *ngIf="selectedProject.id === 'featured'">
+                        <span class="badge-dot"></span>
+                        Featured
+                    </div>
+
+                    <h3 class="project-title">{{ selectedProject.title }}</h3>
+                    <p class="project-description">{{ selectedProject.description }}</p>
+
+                    <!-- Technologies -->
+                    <div class="tech-stack">
+                        <span class="tech-label">Technologies:</span>
+                        <div class="tech-tags">
+                            <span *ngFor="let tech of selectedProject.technologies" class="tech-tag">
+                                {{ tech }}
+                            </span>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Actions -->
+                    <div class="project-actions">
+                        <a [href]="selectedProject.url" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-primary">
+                            <span>View Project</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m9 18 6-6-6-6" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Navigation -->
+        <div class="projects-navigation">
+            <h4 class="nav-title">Explore Projects</h4>
+
+            <!-- Featured Project Button -->
+            <button class="nav-item featured-nav" [class.active]="isProjectSelected(featuredProject)"
+                (click)="selectProject(featuredProject)">
+                <div class="nav-content">
+                    <span class="nav-label">Featured</span>
+                    <span class="nav-title-text">{{ featuredProject.title }}</span>
+                </div>
+                <div class="nav-indicator"></div>
+            </button>
+
+            <!-- Other Projects Navigation -->
+            <div class="other-projects-nav">
+                <span class="nav-section-title">Other Projects</span>
+                <div class="nav-projects-grid">
+                    <button *ngFor="let project of otherProjects" class="nav-item project-nav"
+                        [class.active]="isProjectSelected(project)" (click)="selectProject(project)">
+                        <div class="nav-content">
+                            <span class="nav-title-text">{{ project.title }}</span>
+                            <div class="nav-tech-tags">
+                                <span *ngFor="let tech of project.technologies" class="nav-tech-tag">{{ tech }}</span>
+                            </div>
+                        </div>
+                        <div class="nav-indicator"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="background-elements">
+        <div class="grid-overlay"></div>
+        <div class="gradient-overlay"></div>
+    </div>
+</section>
