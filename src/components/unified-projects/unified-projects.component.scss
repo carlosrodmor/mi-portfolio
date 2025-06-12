@@ -1,4 +1,4 @@
-// Variables optimizadas
+// Variables
 $bg: #000;
 $text: #fff;
 $text-muted: rgba(255, 255, 255, 0.7);
@@ -7,9 +7,11 @@ $accent: #00ff00;
 $border: rgba(255, 255, 255, 0.1);
 $card-bg: rgba(255, 255, 255, 0.02);
 $card-hover: rgba(255, 255, 255, 0.05);
-$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+$smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+$elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-// Mixins consolidados
+// Mixins
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -21,14 +23,31 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid $border;
   border-radius: 12px;
   backdrop-filter: blur(10px);
-  transition: $transition;
+  transition: $fast;
 }
 
-@mixin hover-lift {
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.2);
+@mixin shimmer {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.6s;
+  }
+
+  &:hover::before {
+    left: 100%;
   }
 }
 
@@ -40,7 +59,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 
-  // Elementos de fondo simplificados
+  // Fondo
   .background-elements {
     position: absolute;
     inset: 0;
@@ -58,6 +77,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
       background-size: 50px 50px;
       opacity: 0.3;
+      animation: gridMove 20s linear infinite;
     }
 
     .gradient-overlay {
@@ -113,7 +133,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
 
-  // Container principal
+  // Container
   .projects-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -126,61 +146,141 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     align-items: start;
   }
 
-  // Display de proyectos
-  .project-display .project-card {
-    @include card;
-    @include hover-lift;
-    padding: 0;
-    overflow: hidden;
-    height: 700px;
-    display: flex;
-    flex-direction: column;
-    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  // Proyecto con efectos fluidos
+  .project-display {
+    position: relative;
 
-    &.fade-out {
-      opacity: 0.3;
-      transform: scale(0.98);
-      transition: all 0.2s ease-out;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.02),
+        transparent
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
     }
 
-    &.featured {
-      border-color: rgba(0, 255, 0, 0.2);
-      background: rgba(0, 255, 0, 0.02);
+    &.transitioning::before {
+      opacity: 1;
+    }
+
+    .project-card {
+      @include card;
+      @include shimmer;
+      padding: 0;
+      overflow: hidden;
+      height: 700px;
+      display: flex;
+      flex-direction: column;
+      animation: fadeInUp 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+      will-change: transform, opacity, filter;
+      position: relative;
 
       &:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+          0 0 0 1px rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      // Estados de transición mejorados
+      &.fade-out {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px) rotateX(5deg);
+        filter: blur(8px);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.6, 1);
+      }
+
+      &.fade-in {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotateX(0deg);
+        filter: blur(0px);
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+
+      // Efecto de respiración para el proyecto destacado
+      &.featured {
         border-color: rgba(0, 255, 0, 0.3);
-        box-shadow: 0 20px 40px rgba(0, 255, 0, 0.1);
+        background: rgba(0, 255, 0, 0.03);
+        animation: featuredPulse 3s ease-in-out infinite;
+
+        &:hover {
+          border-color: rgba(0, 255, 0, 0.5);
+          box-shadow: 0 25px 50px rgba(0, 255, 0, 0.15),
+            0 0 30px rgba(0, 255, 0, 0.1);
+        }
       }
     }
   }
 
+  // Imagen con efectos avanzados
   .project-image {
     position: relative;
     height: 380px;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: $transition;
-      filter: grayscale(100%);
+      transition: $smooth;
+      filter: grayscale(70%) brightness(0.8);
+      will-change: transform, filter;
+      backface-visibility: hidden;
+      transform: translateZ(0) scale(1.05);
     }
 
     .image-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(0, 0, 0, 0.1) 50%,
+        135deg,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
         rgba(0, 0, 0, 0.8) 100%
       );
+      transition: $smooth;
+      opacity: 0.8;
     }
 
-    &:hover img {
-      transform: scale(1.05);
-      filter: grayscale(0%);
+    // Efecto de reveal más dramático
+    &:hover {
+      img {
+        transform: translateZ(0) scale(1.1);
+        filter: grayscale(0%) brightness(1.1);
+      }
+      .image-overlay {
+        opacity: 0.4;
+        background: linear-gradient(
+          135deg,
+          transparent 0%,
+          rgba(0, 0, 0, 0.1) 50%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+      }
+    }
+
+    // Efecto de loading shimmer
+    &.loading {
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shimmerLoad 1.5s ease-in-out infinite;
+      }
     }
   }
 
@@ -190,6 +290,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    position: relative;
   }
 
   .project-badge {
@@ -201,13 +302,17 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     letter-spacing: 2px;
     color: $accent;
     font-weight: 500;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInStagger 0.4s ease-out 0.1s forwards;
 
     .badge-dot {
-      width: 6px;
-      height: 6px;
+      width: 8px;
+      height: 8px;
       background: $accent;
       border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
+      animation: enhancedPulse 2s ease-in-out infinite;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
     }
   }
 
@@ -216,6 +321,9 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 300;
     margin: 0;
     letter-spacing: -0.01em;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInStagger 0.4s ease-out 0.2s forwards;
   }
 
   .project-description {
@@ -224,11 +332,18 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     margin: 0;
     font-size: 0.95rem;
     font-weight: 300;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInStagger 0.4s ease-out 0.3s forwards;
   }
 
-  // Tech stack y features
+  // Tech y features con animaciones escalonadas
   .tech-stack,
   .features {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInStagger 0.4s ease-out 0.4s forwards;
+
     .tech-label,
     .features-label {
       display: block;
@@ -254,16 +369,27 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       border-radius: 20px;
       font-size: 0.8rem;
       font-weight: 300;
-      transition: $transition;
+      transition: $elastic;
+      opacity: 0;
+      transform: scale(0.8) translateY(10px);
+      animation: tagAppear 0.3s ease-out forwards;
+
+      @for $i from 1 through 8 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{0.5 + ($i * 0.05)}s;
+        }
+      }
 
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
       }
     }
   }
 
-  // Estadísticas
+  // Stats
   .project-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -274,6 +400,19 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     .stat-item {
       text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideInStagger 0.4s ease-out forwards;
+
+      &:nth-child(1) {
+        animation-delay: 0.5s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0.6s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.7s;
+      }
 
       .stat-number {
         display: block;
@@ -281,6 +420,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         font-weight: 500;
         color: $text;
         margin-bottom: 0.25rem;
+        transition: $smooth;
       }
 
       .stat-label {
@@ -289,12 +429,20 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         text-transform: uppercase;
         letter-spacing: 1px;
       }
+
+      &:hover .stat-number {
+        color: $accent;
+        transform: scale(1.1);
+      }
     }
   }
 
   // Acciones
   .project-actions {
     margin-top: auto;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInStagger 0.4s ease-out 0.8s forwards;
 
     .btn {
       @include flex-center;
@@ -307,26 +455,47 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       border-radius: 8px;
       font-size: 0.9rem;
       font-weight: 400;
-      transition: $transition;
+      transition: $elastic;
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+      }
 
       &.btn-primary:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.3);
-        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+
+        &::before {
+          transform: translateX(100%);
+        }
       }
 
       svg {
-        transition: $transition;
+        transition: $elastic;
+        filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
       }
-
       &:hover svg {
-        transform: translateX(3px);
+        transform: translateX(5px) scale(1.1);
       }
     }
   }
 
-  // Navegación
+  // Navegación con efectos mejorados
   .projects-navigation {
     .nav-title {
       font-size: 1.1rem;
@@ -348,25 +517,60 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation: slideIn 0.4s ease-out forwards;
+      transition: $smooth;
+
+      // Efecto de ripple al hacer click
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s ease, height 0.3s ease;
+      }
+
+      &:active::after {
+        width: 200px;
+        height: 200px;
+      }
 
       &:hover {
         background: $card-hover;
-        border-color: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateX(8px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.05);
       }
 
       &.active {
-        background: $card-hover;
-        border-color: rgba(255, 255, 255, 0.3);
+        background: linear-gradient(
+          135deg,
+          $card-hover,
+          rgba(255, 255, 255, 0.08)
+        );
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: translateX(12px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(255, 255, 255, 0.1);
 
         .nav-indicator {
           opacity: 1;
-          transform: scaleX(1);
+          transform: scaleY(1);
+          background: linear-gradient(180deg, $accent, rgba(0, 255, 0, 0.5));
+          box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
         }
 
         &.featured-nav {
-          border-color: rgba(0, 255, 0, 0.4);
-          background: rgba(0, 255, 0, 0.03);
+          border-color: rgba(0, 255, 0, 0.5);
+          background: linear-gradient(
+            135deg,
+            rgba(0, 255, 0, 0.05),
+            rgba(0, 255, 0, 0.1)
+          );
+          box-shadow: 0 12px 30px rgba(0, 255, 0, 0.15);
         }
       }
 
@@ -382,6 +586,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         letter-spacing: 1px;
         color: $accent;
         margin-bottom: 0.25rem;
+        text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
       }
 
       .nav-title-text {
@@ -389,6 +594,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         font-size: 0.9rem;
         font-weight: 400;
         margin-bottom: 0.25rem;
+        transition: $smooth;
       }
 
       .nav-tech-tags {
@@ -401,12 +607,12 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       .nav-tech-tag {
         font-size: 0.7rem;
         color: $text-light;
-        transition: $transition;
+        transition: $fast;
 
         &:hover {
-          color: $text-muted;
+          color: $accent;
+          text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
         }
-
         &:not(:last-child)::after {
           content: "·";
           margin: 0 0.3rem;
@@ -418,12 +624,13 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: absolute;
         left: 0;
         inset-block: 0;
-        width: 3px;
+        width: 4px;
         background: $accent;
         opacity: 0;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: $transition;
+        transform: scaleY(0);
+        transform-origin: center;
+        transition: $smooth;
+        border-radius: 0 2px 2px 0;
       }
     }
 
@@ -449,31 +656,76 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             animation-delay: 0.1s;
           }
           &:nth-child(2) {
-            animation-delay: 0.2s;
+            animation-delay: 0.15s;
           }
           &:nth-child(3) {
-            animation-delay: 0.3s;
+            animation-delay: 0.2s;
           }
           &:nth-child(4) {
-            animation-delay: 0.4s;
+            animation-delay: 0.25s;
           }
         }
       }
     }
   }
 
-  // Animaciones
-  @keyframes pulse {
+  // Animaciones mejoradas
+  @keyframes gridMove {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(50px, 50px);
+    }
+  }
+
+  @keyframes enhancedPulse {
     0%,
     100% {
       opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
     }
     50% {
-      opacity: 0.5;
+      opacity: 0.7;
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+    }
+  }
+
+  @keyframes featuredPulse {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
     }
   }
 
   @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  @keyframes slideInStagger {
     from {
       opacity: 0;
       transform: translateY(30px);
@@ -484,18 +736,27 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
 
-  @keyframes slideIn {
+  @keyframes tagAppear {
     from {
       opacity: 0;
-      transform: translateX(-20px);
+      transform: scale(0.6) translateY(20px) rotateY(90deg);
     }
     to {
       opacity: 1;
-      transform: translateX(0);
+      transform: scale(1) translateY(0) rotateY(0deg);
     }
   }
 
-  // Responsive optimizado
+  @keyframes shimmerLoad {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  // Responsive
   @media (max-width: 1024px) {
     .projects-container {
       grid-template-columns: 1fr;
@@ -549,7 +810,6 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .project-display .project-stats {
       padding: 1rem 0;
-
       .stat-item .stat-number {
         font-size: 1.2rem;
       }

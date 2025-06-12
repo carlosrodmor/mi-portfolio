@@ -15,7 +15,7 @@
                 <!-- Project Image -->
                 <div class="project-image">
                     <img [src]="selectedProject.image || 'assets/placeholder.png'" [alt]="selectedProject.title"
-                        loading="lazy">
+                        loading="eager" decoding="async" fetchpriority="high">
                     <div class="image-overlay"></div>
                 </div>
 
@@ -63,7 +63,8 @@
 
             <!-- Featured Project Button -->
             <button class="nav-item featured-nav" [class.active]="isProjectSelected(featuredProject)"
-                (click)="selectProject(featuredProject)">
+                (click)="selectProject(featuredProject); onNavItemClick($event)"
+                (mouseenter)="onNavItemHover($event, true)" (mouseleave)="onNavItemHover($event, false)">
                 <div class="nav-content">
                     <span class="nav-label">Featured</span>
                     <span class="nav-title-text">{{ featuredProject.title }}</span>
@@ -76,7 +77,9 @@
                 <span class="nav-section-title">Other Projects</span>
                 <div class="nav-projects-grid">
                     <button *ngFor="let project of otherProjects" class="nav-item project-nav"
-                        [class.active]="isProjectSelected(project)" (click)="selectProject(project)">
+                        [class.active]="isProjectSelected(project)"
+                        (click)="selectProject(project); onNavItemClick($event)"
+                        (mouseenter)="onNavItemHover($event, true)" (mouseleave)="onNavItemHover($event, false)">
                         <div class="nav-content">
                             <span class="nav-title-text">{{ project.title }}</span>
                             <div class="nav-tech-tags">
