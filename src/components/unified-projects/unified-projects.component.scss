@@ -7,26 +7,26 @@ $accent: #00ff00;
 $border: rgba(255, 255, 255, 0.1);
 $card-bg: rgba(255, 255, 255, 0.02);
 $card-hover: rgba(255, 255, 255, 0.05);
-$fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-$smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-$elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+$f: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+$s: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+$e: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 // Mixins
-@mixin flex-center {
+@mixin fc {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@mixin card {
+@mixin c {
   background: $card-bg;
   border: 1px solid $border;
   border-radius: 12px;
   backdrop-filter: blur(10px);
-  transition: $fast;
+  transition: $f;
 }
 
-@mixin shimmer {
+@mixin sh {
   position: relative;
   overflow: hidden;
 
@@ -77,7 +77,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
       background-size: 50px 50px;
       opacity: 0.3;
-      animation: gridMove 20s linear infinite;
+      animation: gm 20s linear infinite;
     }
 
     .gradient-overlay {
@@ -171,14 +171,14 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
     .project-card {
-      @include card;
-      @include shimmer;
+      @include c;
+      @include sh;
       padding: 0;
       overflow: hidden;
       height: 700px;
       display: flex;
       flex-direction: column;
-      animation: fadeInUp 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+      animation: fiu 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
       will-change: transform, opacity, filter;
       position: relative;
 
@@ -208,7 +208,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       &.featured {
         border-color: rgba(0, 255, 0, 0.3);
         background: rgba(0, 255, 0, 0.03);
-        animation: featuredPulse 3s ease-in-out infinite;
+        animation: fp 3s ease-in-out infinite;
 
         &:hover {
           border-color: rgba(0, 255, 0, 0.5);
@@ -230,7 +230,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: $smooth;
+      transition: $s;
       filter: grayscale(70%) brightness(0.8);
       will-change: transform, filter;
       backface-visibility: hidden;
@@ -246,7 +246,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         rgba(0, 0, 0, 0.3) 50%,
         rgba(0, 0, 0, 0.8) 100%
       );
-      transition: $smooth;
+      transition: $s;
       opacity: 0.8;
     }
 
@@ -279,7 +279,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
           rgba(255, 255, 255, 0.1),
           transparent
         );
-        animation: shimmerLoad 1.5s ease-in-out infinite;
+        animation: sl 1.5s ease-in-out infinite;
       }
     }
   }
@@ -294,7 +294,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .project-badge {
-    @include flex-center;
+    @include fc;
     justify-content: flex-start;
     gap: 0.5rem;
     font-size: 0.75rem;
@@ -304,14 +304,14 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     font-weight: 500;
     opacity: 0;
     transform: translateX(-20px);
-    animation: slideInStagger 0.4s ease-out 0.1s forwards;
+    animation: sis 0.4s ease-out 0.1s forwards;
 
     .badge-dot {
       width: 8px;
       height: 8px;
       background: $accent;
       border-radius: 50%;
-      animation: enhancedPulse 2s ease-in-out infinite;
+      animation: ep 2s ease-in-out infinite;
       box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
     }
   }
@@ -323,7 +323,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     letter-spacing: -0.01em;
     opacity: 0;
     transform: translateY(30px);
-    animation: slideInStagger 0.4s ease-out 0.2s forwards;
+    animation: sis 0.4s ease-out 0.2s forwards;
   }
 
   .project-description {
@@ -334,7 +334,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     font-weight: 300;
     opacity: 0;
     transform: translateY(30px);
-    animation: slideInStagger 0.4s ease-out 0.3s forwards;
+    animation: sis 0.4s ease-out 0.3s forwards;
   }
 
   // Tech y features con animaciones escalonadas
@@ -342,7 +342,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   .features {
     opacity: 0;
     transform: translateY(30px);
-    animation: slideInStagger 0.4s ease-out 0.4s forwards;
+    animation: sis 0.4s ease-out 0.4s forwards;
 
     .tech-label,
     .features-label {
@@ -369,10 +369,10 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       border-radius: 20px;
       font-size: 0.8rem;
       font-weight: 300;
-      transition: $elastic;
+      transition: $e;
       opacity: 0;
       transform: scale(0.8) translateY(10px);
-      animation: tagAppear 0.3s ease-out forwards;
+      animation: ta 0.3s ease-out forwards;
 
       @for $i from 1 through 8 {
         &:nth-child(#{$i}) {
@@ -402,7 +402,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       text-align: center;
       opacity: 0;
       transform: translateY(20px);
-      animation: slideInStagger 0.4s ease-out forwards;
+      animation: sis 0.4s ease-out forwards;
 
       &:nth-child(1) {
         animation-delay: 0.5s;
@@ -420,7 +420,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         font-weight: 500;
         color: $text;
         margin-bottom: 0.25rem;
-        transition: $smooth;
+        transition: $s;
       }
 
       .stat-label {
@@ -442,10 +442,10 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     margin-top: auto;
     opacity: 0;
     transform: translateY(30px);
-    animation: slideInStagger 0.4s ease-out 0.8s forwards;
+    animation: sis 0.4s ease-out 0.8s forwards;
 
     .btn {
-      @include flex-center;
+      @include fc;
       gap: 0.5rem;
       padding: 0.8rem 1.5rem;
       background: transparent;
@@ -455,7 +455,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       border-radius: 8px;
       font-size: 0.9rem;
       font-weight: 400;
-      transition: $elastic;
+      transition: $e;
       cursor: pointer;
       position: relative;
       overflow: hidden;
@@ -486,7 +486,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       }
 
       svg {
-        transition: $elastic;
+        transition: $e;
         filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
       }
       &:hover svg {
@@ -506,7 +506,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
     .nav-item {
-      @include card;
+      @include c;
       width: 100%;
       padding: 1rem;
       margin-bottom: 0.75rem;
@@ -517,8 +517,8 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      animation: slideIn 0.4s ease-out forwards;
-      transition: $smooth;
+      animation: si 0.4s ease-out forwards;
+      transition: $s;
 
       // Efecto de ripple al hacer click
       &::after {
@@ -594,7 +594,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         font-size: 0.9rem;
         font-weight: 400;
         margin-bottom: 0.25rem;
-        transition: $smooth;
+        transition: $s;
       }
 
       .nav-tech-tags {
@@ -607,7 +607,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       .nav-tech-tag {
         font-size: 0.7rem;
         color: $text-light;
-        transition: $fast;
+        transition: $f;
 
         &:hover {
           color: $accent;
@@ -629,7 +629,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         opacity: 0;
         transform: scaleY(0);
         transform-origin: center;
-        transition: $smooth;
+        transition: $s;
         border-radius: 0 2px 2px 0;
       }
     }
@@ -670,7 +670,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   // Animaciones mejoradas
-  @keyframes gridMove {
+  @keyframes gm {
     0% {
       transform: translate(0, 0);
     }
@@ -679,7 +679,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
   }
 
-  @keyframes enhancedPulse {
+  @keyframes ep {
     0%,
     100% {
       opacity: 1;
@@ -693,7 +693,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
   }
 
-  @keyframes featuredPulse {
+  @keyframes fp {
     0%,
     100% {
       box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
@@ -703,7 +703,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
   }
 
-  @keyframes fadeInUp {
+  @keyframes fiu {
     from {
       opacity: 0;
       transform: translateY(40px) scale(0.95);
@@ -714,7 +714,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
   }
 
-  @keyframes slideIn {
+  @keyframes si {
     from {
       opacity: 0;
       transform: translateX(-20px) scale(0.95);
@@ -725,7 +725,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
   }
 
-  @keyframes slideInStagger {
+  @keyframes sis {
     from {
       opacity: 0;
       transform: translateY(30px);
@@ -736,7 +736,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
   }
 
-  @keyframes tagAppear {
+  @keyframes ta {
     from {
       opacity: 0;
       transform: scale(0.6) translateY(20px) rotateY(90deg);
@@ -747,7 +747,7 @@ $elastic: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
   }
 
-  @keyframes shimmerLoad {
+  @keyframes sl {
     0% {
       transform: translateX(-100%);
     }
