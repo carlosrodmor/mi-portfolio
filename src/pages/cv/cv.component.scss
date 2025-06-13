@@ -264,6 +264,88 @@ html {
     margin-top: 6px;
     font-size: 0.82rem;
   }
+
+  // Estilos específicos para el curso principal con proyectos
+  &.main-course {
+    .projects-container {
+      margin-top: 15px;
+      padding: 12px 0 8px 8px;
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+
+      .projects-header {
+        margin-bottom: 12px;
+
+        .projects-title {
+          font-size: 0.8rem;
+          color: $color-accent;
+          font-weight: 400;
+          letter-spacing: 0.3px;
+          opacity: 0.9;
+        }
+      }
+
+      .project-item {
+        margin-bottom: 12px;
+        padding-left: 16px;
+        position: relative;
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 6px;
+          width: 2px;
+          height: 2px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        &:last-child {
+          margin-bottom: 8px;
+        }
+
+        .project-name {
+          font-size: 0.85rem;
+          font-weight: 400;
+          color: $color-text;
+          margin-bottom: 3px;
+          letter-spacing: 0.3px;
+        }
+
+        .project-description {
+          font-size: 0.78rem;
+          color: $color-text-muted;
+          line-height: 1.4;
+          margin-bottom: 6px;
+        }
+
+        .project-tech {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          margin-top: 6px;
+
+          .tech-group {
+            font-size: 0.75rem;
+            color: rgba(226, 226, 226, 0.5);
+            font-style: italic;
+            padding-left: 8px;
+            position: relative;
+
+            &:before {
+              content: "▸";
+              position: absolute;
+              left: 0;
+              color: $color-accent;
+              opacity: 0.6;
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .tech-details {
@@ -539,6 +621,33 @@ html {
     .school {
       font-size: 0.82rem;
     }
+
+    &.main-course {
+      .projects-container {
+        padding: 10px 0 6px 6px;
+
+        .projects-header .projects-title {
+          font-size: 0.78rem;
+        }
+
+        .project-item {
+          margin-bottom: 10px;
+          padding-left: 14px;
+
+          .project-name {
+            font-size: 0.82rem;
+          }
+
+          .project-description {
+            font-size: 0.76rem;
+          }
+
+          .project-tech .tech-group {
+            font-size: 0.73rem;
+          }
+        }
+      }
+    }
   }
 
   .skill-tags {
@@ -558,6 +667,35 @@ html {
 
     .language-level .level-bar {
       width: 80px;
+    }
+  }
+
+  .education-item.main-course {
+    .projects-container {
+      padding: 8px 0 4px 4px;
+
+      .projects-header .projects-title {
+        font-size: 0.75rem;
+      }
+
+      .project-item {
+        margin-bottom: 8px;
+        padding-left: 12px;
+
+        .project-name {
+          font-size: 0.8rem;
+        }
+
+        .project-description {
+          font-size: 0.74rem;
+        }
+
+        .project-tech {
+          .tech-group {
+            font-size: 0.7rem;
+          }
+        }
+      }
     }
   }
 }
