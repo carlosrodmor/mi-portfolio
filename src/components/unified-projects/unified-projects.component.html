@@ -5,90 +5,63 @@
         <p class="projects-subtitle">A selection of my most outstanding work</p>
     </div>
 
-    <!-- Main Content Container -->
-    <div class="projects-container">
+    <!-- Professional Experience Highlight -->
+    <div class="professional-highlight">
+        <div class="professional-content">
+            <div class="text-animation-container">
+                <h3 class="main-text-en">
+                    As a front-end developer, I've had the opportunity to work on challenging projects for 
+                    <span class="highlight-clients">prestigious international clients</span>, including collaborations with 
+                    <span class="client-name">Oppo</span> and <span class="client-name">Universidad Alfonso X El Sabio</span>, 
+                    among others.
+                </h3>
+                <p class="sub-text-en">
+                    This experience has allowed me to develop robust technological solutions using modern frameworks, 
+                    adapting to different work methodologies and international quality standards.
+                </p>
+            </div>
+        </div>
+    </div>
 
-        <!-- Project Display Area -->
-        <div class="project-display">
-            <div class="project-card" [class.featured]="selectedProject.id === 'featured'">
-
-                <!-- Project Image -->
-                <div class="project-image">
-                    <img [src]="selectedProject.image || 'assets/placeholder.png'" [alt]="selectedProject.title"
-                        loading="eager" decoding="async" fetchpriority="high">
-                    <div class="image-overlay"></div>
+    <!-- Minimal Projects Container -->
+    <div class="minimal-projects-container">
+        
+        <!-- Clean Project Display -->
+        <div class="clean-project-display">
+            <div class="project-preview">
+                <div class="project-image-minimal">
+                    <img [src]="selectedProject.image || 'assets/placeholder.png'" [alt]="selectedProject.title">
                 </div>
-
-                <!-- Project Info -->
-                <div class="project-info">
-                    <div class="project-badge" *ngIf="selectedProject.id === 'featured'">
-                        <span class="badge-dot"></span>
-                        Featured
+                
+                <div class="project-details">
+                    <div class="project-meta" *ngIf="selectedProject.id === 'featured'">Featured</div>
+                    <h4 class="project-name">{{ selectedProject.title }}</h4>
+                    <p class="project-brief">{{ selectedProject.description }}</p>
+                    
+                    <div class="tech-minimal">
+                        <span *ngFor="let tech of selectedProject.technologies" class="tech-item">{{ tech }}</span>
                     </div>
-
-                    <h3 class="project-title">{{ selectedProject.title }}</h3>
-                    <p class="project-description">{{ selectedProject.description }}</p>
-
-                    <!-- Technologies -->
-                    <div class="tech-stack">
-                        <span class="tech-label">Technologies:</span>
-                        <div class="tech-tags">
-                            <span *ngFor="let tech of selectedProject.technologies" class="tech-tag">
-                                {{ tech }}
-                            </span>
-                        </div>
-                    </div>
-
-
-
-                    <!-- Actions -->
-                    <div class="project-actions">
-                        <a [href]="selectedProject.url" target="_blank" rel="noopener noreferrer"
-                            class="btn btn-primary">
-                            <span>View Project</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="m9 18 6-6-6-6" />
-                            </svg>
-                        </a>
-                    </div>
+                    
+                    <a [href]="selectedProject.url" target="_blank" class="view-link">
+                        View →
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- Project Navigation -->
-        <div class="projects-navigation">
-            <h4 class="nav-title">Explore Projects</h4>
-
-            <!-- Featured Project Button -->
-            <button class="nav-item featured-nav" [class.active]="isProjectSelected(featuredProject)"
-                (click)="selectProject(featuredProject); onNavItemClick($event)"
-                (mouseenter)="onNavItemHover($event, true)" (mouseleave)="onNavItemHover($event, false)">
-                <div class="nav-content">
-                    <span class="nav-label">Featured</span>
-                    <span class="nav-title-text">{{ featuredProject.title }}</span>
-                </div>
-                <div class="nav-indicator"></div>
-            </button>
-
-            <!-- Other Projects Navigation -->
-            <div class="other-projects-nav">
-                <span class="nav-section-title">Other Projects</span>
-                <div class="nav-projects-grid">
-                    <button *ngFor="let project of otherProjects" class="nav-item project-nav"
-                        [class.active]="isProjectSelected(project)"
-                        (click)="selectProject(project); onNavItemClick($event)"
-                        (mouseenter)="onNavItemHover($event, true)" (mouseleave)="onNavItemHover($event, false)">
-                        <div class="nav-content">
-                            <span class="nav-title-text">{{ project.title }}</span>
-                            <div class="nav-tech-tags">
-                                <span *ngFor="let tech of project.technologies" class="nav-tech-tag">{{ tech }}</span>
-                            </div>
-                        </div>
-                        <div class="nav-indicator"></div>
-                    </button>
-                </div>
+        <!-- Minimal Navigation -->
+        <div class="minimal-navigation">
+            <div class="nav-list">
+                <button class="nav-btn featured" [class.active]="isProjectSelected(featuredProject)"
+                    (click)="selectProject(featuredProject)">
+                    {{ featuredProject.title }}
+                </button>
+                
+                <button *ngFor="let project of otherProjects" class="nav-btn" 
+                    [class.active]="isProjectSelected(project)"
+                    (click)="selectProject(project)">
+                    {{ project.title }}
+                </button>
             </div>
         </div>
     </div>
