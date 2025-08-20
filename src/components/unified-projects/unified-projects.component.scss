@@ -275,12 +275,8 @@ $e: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
           border-left-color: $accent;
         }
         
-        &.featured {
-          border-left-color: rgba(0, 255, 0, 0.4);
-          
-          &.active {
-            border-left-color: $accent;
-          }
+        &.featured.active {
+          border-left-color: $accent;
         }
       }
     }
