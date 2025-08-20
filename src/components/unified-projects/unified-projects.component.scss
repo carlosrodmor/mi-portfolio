@@ -11,8 +11,8 @@ $f: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 $s: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 $e: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-// Import Inter font
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+// Import Inter font - only weights we actually use (300, 400, 500)
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
 
 // Professional highlight section with incredible typography
 .professional-highlight {
